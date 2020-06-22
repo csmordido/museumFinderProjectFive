@@ -20,59 +20,108 @@ body {
   color: #222;
 }
 
+/* header styles */
 h1 {
-  font: 700 2rem/1 "Kameron", serif;
-  margin: 40px auto 0 auto;
+  font: 700 1.4rem/1 "Kameron", serif;
   max-width: 90%;
+  letter-spacing: 1px;
 }
 
 h1 span {
   display: block;
-  margin-left: 30px;
   position: relative;
 }
 
-h1 span::before {
-  content: "";
-  height: 22px;
-  width: 22px;
-  position: absolute;
+header {
+  padding: 5%;
+  height: 17vh;
+}
+
+header .logo {
+  width: 20px;
+  margin-right: 3px;
+}
+
+/* main styles */
+main {
+  height: 83vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #222;
-  left: -30px;
-  top: 3px;
-  border-radius: 50%;
+  border-top-left-radius: 80px;
 }
 
 form {
   text-align: center;
-  margin: 100px auto;
-  background-color: #222;
-  padding: 70px 40px;
-  max-width: 500px;
+  padding: 0 5% 0 5%;
+  width: 100%;
   opacity: 1;
   transition: opacity 0.4s;
-  /* border-top-left-radius: 80px;
-  border-bottom-right-radius: 80px; */
 }
 
-input[type="text"],
-input[type="submit"],
-button {
-  padding: 8px 10px;
-  border: none;
+form p {
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin-top: 50px;
 }
 
 input[type="text"], 
-input::placeholder,
+::placeholder,
 input[type="submit"],
 button {
   font: 400 1.2rem "Kameron", serif;
   letter-spacing: 1px;
 }
 
+input[type="text"],
+input[type="submit"],
+button {
+  text-align: center;
+  padding: 8px 10px;
+  border: none;
+  width: 100%;
+}
+
+input[type="text"] {
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  background: none;
+}
+
 input[type="submit"],
 button {
   background-color: #999;
+  margin-top: 15px;
+}
+
+::placeholder {
+  color: #fff;
+  opacity: 0.8;
+}
+
+/* .museumsList styles */
+.museumsList h2 {
+  font-size: 1.1rem;
+}
+
+.museumsList li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px 5%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.museumsList li:nth-of-type(even) {
+  background-color: #222;
+  color: #fff;
+}
+
+.museumsList li span {
+  margin-right: 20px;
 }
 
 a {

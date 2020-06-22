@@ -3,6 +3,8 @@ import axios from 'axios';
 import Form from './Components/Form';
 import DisplayMuseumsList from './Components/DisplayMuseumsList';
 import DisplayMuseumDetails from './Components/DisplayMuseumDetails';
+import CityInfo from './Components/CityInfo';
+import { ReactComponent as Logo } from './assets/logo.svg';
 
 class App extends Component {
   constructor () {
@@ -10,6 +12,7 @@ class App extends Component {
 
     this.state = {
       userInput: '',
+      cityInfo: [],
       museumsData: [],
       museumDetails: [],
     }
@@ -39,6 +42,11 @@ class App extends Component {
     }).then( response => {
       const longitude = response.data.lon;
       const latitude = response.data.lat;
+      const newCityInfo = [];
+      newCityInfo.push(response.data.name, response.data.country);
+      this.setState({
+        cityInfo: newCityInfo,
+      })
       this.updateMuseumsData(longitude, latitude, key);
     })
     this.setState({
@@ -83,7 +91,7 @@ class App extends Component {
     return (
       <div>
         <header>
-          <h1>Museum <span>Finder</span></h1>
+          <h1>Museum <span><Logo className="logo"/>Finder</span></h1>
         </header>
         <main className="wapper">
           <Form 
@@ -91,37 +99,38 @@ class App extends Component {
             value={this.state.userInput}
             onFormSubmit={this.handleSubmit}
           />
-          <section className="museumsList">
-            <ul>
-              {
-                this.state.museumsData.map( obj => {
-                  return (
-                    <DisplayMuseumsList 
-                      key={obj.xid}
-                      museumName={obj.name} 
-                      museumXid={obj.xid}
-                      onDataUpdate={this.updateMuseumDetails}
-                    />
-                  )
-                })
-              }
-            </ul>
-          </section>
-          {
-            this.state.museumDetails.map( obj => {
-              return (
-                <DisplayMuseumDetails 
-                  key={obj.xid}
-                  imgDetail={obj.preview.source}
-                  nameDetail={obj.name}
-                  addressDetail={obj.address}
-                  urlDetail={obj.url}
-                  infoDetail={obj.wikipedia_extracts.text}
-                />
-              )
-            })
-          }
         </main>
+        <section className="museumsList">
+          <CityInfo />
+          <ul>
+            {
+              this.state.museumsData.map( obj => {
+                return (
+                  <DisplayMuseumsList 
+                    key={obj.xid}
+                    museumName={obj.name} 
+                    museumXid={obj.xid}
+                    onDataUpdate={this.updateMuseumDetails}
+                  />
+                )
+              })
+            }
+          </ul>
+        </section>
+        {
+          this.state.museumDetails.map( obj => {
+            return (
+              <DisplayMuseumDetails 
+                key={obj.xid}
+                imgDetail={obj.preview.source}
+                nameDetail={obj.name}
+                addressDetail={obj.address}
+                urlDetail={obj.url}
+                infoDetail={obj.wikipedia_extracts.text}
+              />
+            )
+          })
+        }
       </div>
     );
   }
