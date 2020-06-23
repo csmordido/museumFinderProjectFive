@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "24af41facd13aa9d754174d2c7580523",
+    "revision": "a2dad9bd64fb16fe955d2cf642c6978d",
     "url": "/museumFinderProjectFive/index.html"
   },
   {
-    "revision": "85a16c8a7bdd26e6db3f",
-    "url": "/museumFinderProjectFive/static/css/main.b87b1ca4.chunk.css"
+    "revision": "79ff2a860af972c7478a",
+    "url": "/museumFinderProjectFive/static/css/main.da966f4a.chunk.css"
   },
   {
     "revision": "dcf0504422d6ed72dc60",
@@ -16,11 +16,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/museumFinderProjectFive/static/js/2.c29af85e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "85a16c8a7bdd26e6db3f",
-    "url": "/museumFinderProjectFive/static/js/main.fa659597.chunk.js"
+    "revision": "79ff2a860af972c7478a",
+    "url": "/museumFinderProjectFive/static/js/main.a561f34d.chunk.js"
   },
   {
     "revision": "78c517c49bac5c33702b",
     "url": "/museumFinderProjectFive/static/js/runtime-main.f2ff144a.js"
+  },
+  {
+    "revision": "19beb5210058b83d4824252e6fd076d1",
+    "url": "/museumFinderProjectFive/static/media/logo.19beb521.svg"
   }
 ]);
