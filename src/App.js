@@ -5,7 +5,7 @@ import DisplayMuseumsList from './Components/DisplayMuseumsList';
 import DisplayMuseumDetails from './Components/DisplayMuseumDetails';
 import CityInfo from './Components/CityInfo';
 import { ReactComponent as Logo } from './assets/logo.svg';
-import scrollToElement from './Components/ScrollToElement';
+import scrollToElement from './Components/scrollToElement';
 
 class App extends Component {
   constructor () {

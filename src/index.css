@@ -34,7 +34,7 @@ h1 span {
 
 header {
   padding: 5%;
-  height: 17vh;
+  height: 15vh;
 }
 
 header .logo {
@@ -44,7 +44,7 @@ header .logo {
 
 /* main styles */
 main {
-  height: 83vh;
+  height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,14 +70,14 @@ form p {
 input[type="text"], 
 ::placeholder,
 input[type="submit"],
-button {
+.museumInfo button {
   font: 400 1.2rem "Kameron", serif;
   letter-spacing: 1px;
 }
 
 input[type="text"],
 input[type="submit"],
-button {
+.museumInfo button {
   text-align: center;
   padding: 8px 10px;
   border: none;
@@ -91,7 +91,7 @@ input[type="text"] {
 }
 
 input[type="submit"],
-button {
+.museumInfo button {
   background-color: #999;
   margin-top: 15px;
 }
@@ -118,36 +118,36 @@ button {
 }
 
 /* .museumsList styles */
-.museumsList h3 {
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-}
-
 .museumsList li {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 30px 5%;
-  width: 100%;
-  cursor: pointer;
 }
 
-.museumsList li:nth-of-type(odd) {
-  background-color: #222;
+.museumsList li:nth-of-type(odd),
+.museumsList li:nth-of-type(odd) button {
   color: #fff;
+  background-color: #222;
 }
 
-.museumsList li span {
+.museumsList button {
+  text-align: left;
+  border: none;
+  font: 400 1.2rem "Kameron", serif;
+  background-color: transparent;
+  letter-spacing: 1px;
+  width: 100%;
+  margin: 0;
+}
+
+.museumsList span {
   margin-right: 20px;
-}
-
-li:hover {
-  cursor: pointer;
 }
 
 /* .museumDetails styles */
 .museumDetails {
-  padding: 30px 5%;
+  padding: 50px 5%;
   background-color: #222;
   color: #fff;
 }
@@ -170,7 +170,7 @@ li:hover {
   font-size: 1rem;
   letter-spacing: 1px;
   line-height: 1.3;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .museumInfo a {
@@ -187,4 +187,8 @@ li:hover {
 .museumInfo p {
   font-size: 1.2rem;
   letter-spacing: 1px;
+}
+
+.museumInfo button {
+  margin-top: 20px;
 }

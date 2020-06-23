@@ -1,5 +1,5 @@
 import React from 'react';
-import scrollToElement from './ScrollToElement';
+import scrollToElement from './scrollToElement';
 
 const DisplayMuseumDetails = ({imgDetail, nameDetail, addressDetail, urlDetail, infoDetail}) => {
 
