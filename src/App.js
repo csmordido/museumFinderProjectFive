@@ -5,6 +5,7 @@ import DisplayMuseumsList from './Components/DisplayMuseumsList';
 import DisplayMuseumDetails from './Components/DisplayMuseumDetails';
 import CityInfo from './Components/CityInfo';
 import { ReactComponent as Logo } from './assets/logo.svg';
+import scrollToElement from './Components/ScrollToElement';
 
 class App extends Component {
   constructor () {
@@ -46,13 +47,12 @@ class App extends Component {
       newCityInfo.push(response.data.name, response.data.country);
       this.setState({
         cityInfo: newCityInfo,
-      })
+      });
       this.updateMuseumsData(longitude, latitude, key);
     })
     this.setState({
       userInput: '',
-    })
-    // fadeOut('form');
+    });
   }
 
   updateMuseumsData = (lon, lat, key) => {
@@ -77,7 +77,10 @@ class App extends Component {
       });
       this.setState({
         museumsData: newMuseumsData,
-      });     
+      });   
+      if (this.state.museumsData) {
+        scrollToElement('listContainer');
+      }
     })
   }
 
@@ -100,8 +103,11 @@ class App extends Component {
             onFormSubmit={this.handleSubmit}
           />
         </main>
-        <section className="museumsList">
-          <CityInfo />
+        <section className="museumsList" id="listContainer">
+          {
+            this.state.cityInfo.length > 0 
+            ? <CityInfo city={this.state.cityInfo[0]} country={this.state.cityInfo[1]} /> : null
+          }
           <ul>
             {
               this.state.museumsData.map( obj => {

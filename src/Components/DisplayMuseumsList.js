@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import scrollToElement from './ScrollToElement';
 import axios from 'axios';
 
 class DisplayMuseumsList extends Component {
@@ -22,6 +23,7 @@ class DisplayMuseumsList extends Component {
       const newMuseumDetails = [];
       newMuseumDetails.push(response.data);
       this.props.onDataUpdate(newMuseumDetails);
+      scrollToElement('detailsContainer');
     })
   }
 
@@ -29,7 +31,7 @@ class DisplayMuseumsList extends Component {
     return (
       <li data-xid={this.props.museumXid} onClick={this.handleClick}>
         <span><i className="fas fa-landmark"></i></span>
-        <h2>{this.props.museumName}</h2>
+        <h3>{this.props.museumName}</h3>
       </li>
     )
   }
