@@ -96,14 +96,14 @@ class App extends Component {
         <header>
           <h1>Museum <span><Logo className="logo"/>Finder</span></h1>
         </header>
-        <main className="wapper">
-          <Form 
+        <main>
+          <Form
             onTextInputChange={this.handleChange} 
             value={this.state.userInput}
             onFormSubmit={this.handleSubmit}
           />
         </main>
-        <section className="museumsList" id="listContainer">
+        <section className="museumsList wrapper" id="listContainer">
           {
             this.state.cityInfo.length > 0 
             ? <CityInfo city={this.state.cityInfo[0]} country={this.state.cityInfo[1]} /> : null

@@ -18,7 +18,7 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}> 
+      <form onSubmit={this.handleSubmit} className="wrapper"> 
         <label className="visuallyHidden" htmlFor="city">Enter a city</label>
         <input id="city" value={this.props.value} type="text" placeholder="Enter City" onChange={this.handleChange} />
 
