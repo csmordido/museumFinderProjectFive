@@ -21,6 +21,25 @@ body {
   color: #b0b0b0;
 }
 
+/* error message styles */
+
+.errorMessage {
+  position: absolute;
+  font-size: 1.3rem;
+  letter-spacing: 1.2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 70px 10px;
+  text-align: center;
+  background-color: rgba(44, 44, 44, 0.9);
+  box-shadow: -18px 20px 10px rgba(00, 00, 00, 0.5);
+  border-top-left-radius: 70px;
+  border-bottom-right-radius: 70px;
+  width: 310px;
+}
+
 /* header styles */
 
 h1 {
@@ -72,14 +91,16 @@ form p {
 input[type="text"], 
 ::placeholder,
 input[type="submit"],
-.museumInfo button {
+.museumInfo button,
+.errorMessage button {
   font: 400 1.2rem "Kameron", serif;
   letter-spacing: 1px;
 }
 
 input[type="text"],
 input[type="submit"],
-.museumInfo button {
+.museumInfo button,
+.errorMessage button {
   text-align: center;
   padding: 8px 10px;
   border: none;
@@ -93,7 +114,8 @@ input[type="text"] {
 }
 
 input[type="submit"],
-.museumInfo button {
+.museumInfo button,
+.errorMessage button {
   background-color: #b7b7b7;
   margin-top: 15px;
   color: #222;
@@ -253,6 +275,11 @@ input[type="submit"],
     width: 90%;
   }
 
+  .errorMessage {
+    padding: 70px 80px;
+    width: initial;
+  }
+
   header {
     padding: 30px;
   }
@@ -281,20 +308,23 @@ input[type="submit"],
 
   input[type="submit"], 
   .museumInfo a,
-  .museumInfo button {
+  .museumInfo button,
+  .errorMessage button {
     transition: letter-spacing 0.6s, box-shadow 0.6s;
   }
 
   .museumsList button {
     transition: letter-spacing 0.6s;
   }
-  
+
   input[type="text"]:focus {
     box-shadow: -8px 10px 5px rgba(00, 00, 00, 0.5);
   }
 
   .museumsList button:hover,
-  .museumsList button:focus {
+  .museumsList button:focus,
+  .errorMessage button:hover,
+  .errorMessage button:focus {
     letter-spacing: 3px;
   }
 
@@ -303,7 +333,9 @@ input[type="submit"],
   .museumInfo a:hover,
   .museumInfo a:focus,
   .museumInfo button:hover,
-  .museumInfo button:focus {
+  .museumInfo button:focus,
+  .errorMessage button:hover,
+  .errorMessage button:focus {
     box-shadow: -8px 10px 5px rgba(00, 00, 00, 0.5);
     letter-spacing: 3px;
   }
@@ -314,7 +346,6 @@ input[type="submit"],
 
   .museumDetails {
     padding: initial;
-    height: 100vh;
   }
 
   .museumContainer {

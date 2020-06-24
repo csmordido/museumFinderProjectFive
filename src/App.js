@@ -6,6 +6,7 @@ import DisplayMuseumDetails from './Components/DisplayMuseumDetails';
 import CityInfo from './Components/CityInfo';
 import { ReactComponent as Logo } from './assets/logo.svg';
 import scrollToElement from './Components/scrollToElement';
+import DisplayErrorMessage from './Components/DisplayErrorMessage';
 
 class App extends Component {
   constructor () {
@@ -17,11 +18,13 @@ class App extends Component {
       museumsData: [],
       museumDetails: [],
       isDesktop: false,
+      hasError: false,
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateMuseumDetails = this.updateMuseumDetails.bind(this);
+    this.updateHasError = this.updateHasError.bind(this);
   }
 
   // tracks user's form input
@@ -45,18 +48,25 @@ class App extends Component {
         apikey: key,
       }
     }).then( response => {
-      const longitude = response.data.lon;
-      const latitude = response.data.lat;
-      const newCityInfo = [];
-      // push the city and country name API data to the newCityInfo array
-      newCityInfo.push(response.data.name, response.data.country);
-      // update the cityInfo state to newCityInfo array
-      this.setState({
-        cityInfo: newCityInfo,
+        const longitude = response.data.lon;
+        const latitude = response.data.lat;
+        const newCityInfo = [];
+        // push the city and country name API data to the newCityInfo array
+        newCityInfo.push(response.data.name, response.data.country);
+        // update the cityInfo state to newCityInfo array
+        this.setState({
+          cityInfo: newCityInfo,
+        });
+        // make a second API call with the longitude and latitude data from the first API request
+        this.updateMuseumsData(longitude, latitude, key);
+    }).catch(error => {
+      // if error exists update hasError state to true
+        if (error) {
+          this.setState({
+            hasError: true,
+          });
+        }
       });
-      // make a second API call with the longitude and latitude data from the first API request
-      this.updateMuseumsData(longitude, latitude, key);
-    })
     // empty form input after submit
     this.setState({
       userInput: '',
@@ -80,27 +90,34 @@ class App extends Component {
         apikey: key,
       }
     }).then( (response) => {
-      const newMuseumsData = [];
-      // push each data for the museums in the newMuseumsData array
-      response.data.forEach( obj => {
-        newMuseumsData.push(obj);
-      });
-      // update the museumsData state to newMuseumsData array
-      this.setState({
-        museumsData: newMuseumsData,
-      });   
-      // if device is desktop
-      if (this.state.isDesktop) {
-        // set the height of the .museumsList section to 100vh
-        this.setContainerHeight('100vh');
-      } else {
-        this.setContainerHeight('initial');
-      }
-      // scroll to #listContainer when museumsData is present
-      if (this.state.museumsData) {
-        scrollToElement('listContainer');
-      }
-    })
+        const newMuseumsData = [];
+        // push each data for the museums in the newMuseumsData array
+        response.data.forEach( obj => {
+          newMuseumsData.push(obj);
+        });
+        // update the museumsData state to newMuseumsData array
+        this.setState({
+          museumsData: newMuseumsData,
+        });   
+        // if device is desktop
+        if (this.state.isDesktop) {
+          // set the height of the .museumsList section to 100vh
+          this.setContainerHeight('100vh');
+        } else {
+          this.setContainerHeight('initial');
+        }
+        // scroll to #listContainer when museumsData is present
+        if (this.state.museumsData) {
+          scrollToElement('listContainer');
+        }
+    }).catch( error => {
+        // if error exists update hasError state to true
+        if (error) {
+          this.setState({
+            hasError: true,
+          });
+        }
+    });
   }
 
   // passed to the DisplayMuseumsList component to update the museumDetails state
@@ -121,8 +138,8 @@ class App extends Component {
     this.setState({
       isDesktop: window.innerWidth >= 940,
     });
-    // if device is desktop
-    if (this.state.isDesktop) {
+    // if device is desktop and API request has no error
+    if (this.state.isDesktop && !this.state.hasError) {
       // set the height of the .museumsList section to 100vh
       this.setContainerHeight('100vh');
     } else {
@@ -145,6 +162,13 @@ class App extends Component {
     window.removeEventListener('resize', this.handleWindowResize);
   }
 
+  // function passed as props to DisplayErrorMessage to update the hasError state
+  updateHasError = (value) => {
+    this.setState({
+      hasError: value,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -160,8 +184,8 @@ class App extends Component {
         </main>
         <section className='museumsList wrapper' id='listContainer'>
           {
-            // if the cityInfo state has data display CityInfo component
-            this.state.cityInfo.length > 0 
+            // if the museumsData state has data display CityInfo component
+            this.state.museumsData.length > 0
             ? <CityInfo city={this.state.cityInfo[0]} country={this.state.cityInfo[1]} /> : null
           }
           <ul>
@@ -194,6 +218,11 @@ class App extends Component {
               />
             )
           })
+        }
+        {
+          this.state.hasError
+          ? <DisplayErrorMessage updateErrorState={this.updateHasError} />
+          : null
         }
       </div>
     );
