@@ -18,12 +18,12 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="wrapper"> 
-        <label className="visuallyHidden" htmlFor="city">Enter a city</label>
-        <input id="city" value={this.props.value} type="text" placeholder="Enter City" onChange={this.handleChange} />
+      <form onSubmit={this.handleSubmit} className='wrapper'> 
+        <label className='visuallyHidden' htmlFor='city'>Enter a city</label>
+        <input id='city' value={this.props.value} type='text' placeholder='Enter City' onChange={this.handleChange} />
 
-        <label className="visuallyHidden" htmlFor="submit">Search</label>
-        <input id="submit" type="submit" value="Search" />
+        <label className='visuallyHidden' htmlFor='submit'>Search</label>
+        <input id='submit' type='submit' value='Search' />
 
         <p>Enter a city to search for museums.</p>
       </form>

@@ -16,6 +16,7 @@ class App extends Component {
       cityInfo: [],
       museumsData: [],
       museumDetails: [],
+      isDesktop: false,
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,15 +24,18 @@ class App extends Component {
     this.updateMuseumDetails = this.updateMuseumDetails.bind(this);
   }
 
+  // tracks user's form input
   handleChange(event) {
     this.setState({
       userInput: event,
     })
   }
 
+  // on form submit
   handleSubmit = (event) => {
     event.preventDefault();
     const key = '5ae2e3f221c38a28845f05b6c25ce5d3be16ef238b3cedc588767b71';
+    // make an API request to grab the latitude and longitude of the user inputted city
     axios({
       url: 'https://api.opentripmap.com/0.1/en/places/geoname',
       method: 'GET',
@@ -44,17 +48,22 @@ class App extends Component {
       const longitude = response.data.lon;
       const latitude = response.data.lat;
       const newCityInfo = [];
+      // push the city and country name API data to the newCityInfo array
       newCityInfo.push(response.data.name, response.data.country);
+      // update the cityInfo state to newCityInfo array
       this.setState({
         cityInfo: newCityInfo,
       });
+      // make a second API call with the longitude and latitude data from the first API request
       this.updateMuseumsData(longitude, latitude, key);
     })
+    // empty form input after submit
     this.setState({
       userInput: '',
     });
   }
 
+  // function for the second API request
   updateMuseumsData = (lon, lat, key) => {
     axios({
       url: 'https://api.opentripmap.com/0.1/en/places/radius',
@@ -72,29 +81,75 @@ class App extends Component {
       }
     }).then( (response) => {
       const newMuseumsData = [];
+      // push each data for the museums in the newMuseumsData array
       response.data.forEach( obj => {
         newMuseumsData.push(obj);
       });
+      // update the museumsData state to newMuseumsData array
       this.setState({
         museumsData: newMuseumsData,
       });   
+      // if device is desktop
+      if (this.state.isDesktop) {
+        // set the height of the .museumsList section to 100vh
+        this.setContainerHeight('100vh');
+      } else {
+        this.setContainerHeight('initial');
+      }
+      // scroll to #listContainer when museumsData is present
       if (this.state.museumsData) {
         scrollToElement('listContainer');
       }
     })
   }
 
+  // passed to the DisplayMuseumsList component to update the museumDetails state
   updateMuseumDetails(newData) {
     this.setState({
       museumDetails: newData,
     });
   }
 
+  // function to set the #listContainer's height
+  setContainerHeight = (heightValue) => {
+    document.getElementById('listContainer').style.height = heightValue;
+  }
+
+  // function to execute when window is resized
+  handleWindowResize = () => {
+    // sets isDesktop state to true if screen size is >= 940px
+    this.setState({
+      isDesktop: window.innerWidth >= 940,
+    });
+    // if device is desktop
+    if (this.state.isDesktop) {
+      // set the height of the .museumsList section to 100vh
+      this.setContainerHeight('100vh');
+    } else {
+      this.setContainerHeight('initial');
+    }
+  }
+
+  componentDidMount() {
+    // add event listener for window resize
+    window.addEventListener('resize', this.handleWindowResize);
+    const screenWidth = window.innerWidth;
+    // sets isDesktop state to true if screen size is >= 940px
+    this.setState({
+      isDesktop: screenWidth >= 940,
+    });
+  }
+
+  componentWillUnmount() {
+    // remove event listener for window resize
+    window.removeEventListener('resize', this.handleWindowResize);
+  }
+
   render() {
     return (
       <div>
         <header>
-          <h1>Museum <span><Logo className="logo"/>Finder</span></h1>
+          <h1>Museum <span><Logo className='logo'/>Finder</span></h1>
         </header>
         <main>
           <Form
@@ -103,13 +158,15 @@ class App extends Component {
             onFormSubmit={this.handleSubmit}
           />
         </main>
-        <section className="museumsList wrapper" id="listContainer">
+        <section className='museumsList wrapper' id='listContainer'>
           {
+            // if the cityInfo state has data display CityInfo component
             this.state.cityInfo.length > 0 
             ? <CityInfo city={this.state.cityInfo[0]} country={this.state.cityInfo[1]} /> : null
           }
           <ul>
             {
+              // map the museumsData array and pass the object properties to the DisplayMuseumsList component
               this.state.museumsData.map( obj => {
                 return (
                   <DisplayMuseumsList 
@@ -124,6 +181,7 @@ class App extends Component {
           </ul>
         </section>
         {
+          // map over the museumsDetails array and pass the data to the DisplayMuseumDetails component
           this.state.museumDetails.map( obj => {
             return (
               <DisplayMuseumDetails 

@@ -7,7 +7,7 @@ class CityInfo extends Component {
   
   render () {
     return (
-      <div className="cityInfo">
+      <div className='cityInfo'>
         <p>Museums in</p>
         <h2>{this.props.city}, {this.props.country}</h2>
       </div>
