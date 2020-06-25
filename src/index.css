@@ -131,7 +131,7 @@ input[type="submit"],
 
 .cityInfo {
   text-align: center;
-  padding: 50px 5%;
+  padding: 50px 5% 20px 5%;
 }
 
 .cityInfo p {
@@ -143,6 +143,24 @@ input[type="submit"],
   text-transform: capitalize;
   font: 700 1.7rem "Kameron", serif;
   letter-spacing: 1.2px;
+}
+
+.weather {
+  text-align: center;
+  padding: 1px 25px;
+  background-color: #222;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 30px 0;
+}
+
+.weather p:first-of-type {
+  margin-right: 50px;
+}
+
+.weather p {
+  font-size: 1.1rem;
+  display: inline-block;
 }
 
 /* .museumsList styles */
@@ -341,7 +359,7 @@ input[type="submit"],
   }
 
   .cityInfo {
-    padding: 100px 5%;
+    padding: 50px 5% 50px 5%;
   }
 
   .museumDetails {

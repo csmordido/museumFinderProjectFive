@@ -120,7 +120,7 @@ class App extends Component {
     });
   }
 
-  // passed to the DisplayMuseumsList component to update the museumDetails state
+  // function passed to the DisplayMuseumsList component to update the museumDetails state
   updateMuseumDetails(newData) {
     this.setState({
       museumDetails: newData,
@@ -139,7 +139,7 @@ class App extends Component {
       isDesktop: window.innerWidth >= 940,
     });
     // if device is desktop and API request has no error
-    if (this.state.isDesktop && !this.state.hasError) {
+    if (this.state.isDesktop && this.state.museumsData.length > 0) {
       // set the height of the .museumsList section to 100vh
       this.setContainerHeight('100vh');
     } else {
