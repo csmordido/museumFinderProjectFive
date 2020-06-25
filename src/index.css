@@ -364,6 +364,7 @@ input[type="submit"],
 
   .museumDetails {
     padding: initial;
+    height: 100vh;
   }
 
   .museumContainer {
