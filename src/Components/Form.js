@@ -1,26 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Form extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange = (event) => {
-    this.props.onTextInputChange(event.target.value);
-  } 
-
-  handleSubmit = (event) => {
-    this.props.onFormSubmit(event);
-  } 
-
-  render() {
+const Form = (props) =>  {
     return (
-      <form onSubmit={this.handleSubmit} className='wrapper'> 
+      <form onSubmit={props.handleSubmit} className='wrapper'> 
         <label className='visuallyHidden' htmlFor='city'>Enter a city</label>
-        <input id='city' value={this.props.value} type='text' placeholder='Enter City' onChange={this.handleChange} />
+        <input id='city' value={props.value} type='text' placeholder='Enter City' onChange={props.handleChange} />
 
         <label className='visuallyHidden' htmlFor='submit'>Search</label>
         <input id='submit' type='submit' value='Search' />
@@ -29,6 +13,5 @@ class Form extends Component {
       </form>
     )
   }
-}
 
 export default Form;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import Form from './Components/Form';
 import DisplayMuseumsList from './Components/DisplayMuseumsList';
@@ -25,7 +25,7 @@ class App extends Component {
   // tracks user's form input
   handleChange = (event) => {
     this.setState({
-      userInput: event,
+      userInput: event.target.value,
     })
   }
 
@@ -166,15 +166,15 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <header>
           <h1>Museum <span><Logo className='logo'/>Finder</span></h1>
         </header>
         <main>
           <Form
-            onTextInputChange={this.handleChange} 
+            handleChange={this.handleChange} 
             value={this.state.userInput}
-            onFormSubmit={this.handleSubmit}
+            handleSubmit={this.handleSubmit}
           />
         </main>
         <section className='museumsList wrapper' id='listContainer'>
@@ -219,7 +219,7 @@ class App extends Component {
           ? <DisplayErrorMessage updateErrorState={this.updateHasError} />
           : null
         }
-      </div>
+      </>
     );
   }
 }
