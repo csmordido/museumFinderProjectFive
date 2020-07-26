@@ -20,15 +20,10 @@ class App extends Component {
       isDesktop: false,
       hasError: false,
     }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateMuseumDetails = this.updateMuseumDetails.bind(this);
-    this.updateHasError = this.updateHasError.bind(this);
   }
 
   // tracks user's form input
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({
       userInput: event,
     })
@@ -121,7 +116,7 @@ class App extends Component {
   }
 
   // function passed to the DisplayMuseumsList component to update the museumDetails state
-  updateMuseumDetails(newData) {
+  updateMuseumDetails = (newData) => {
     this.setState({
       museumDetails: newData,
     });
