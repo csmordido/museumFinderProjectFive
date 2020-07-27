@@ -5,14 +5,21 @@ import CityData from "./CityData";
 
 const Main = () => {
   const [cityData, updateCityData] = useState({});
+  const [isLoading, updateIsLoading] = useState(true);
 
 
   return(
     <>
       <main>
-        <Form updateCityData={updateCityData}/>
+        <Form 
+          updateCityData={updateCityData}
+          updateIsLoading={updateIsLoading}
+        />
       </main>
-      <CityData cityData={cityData}/>
+      { !isLoading
+        ? <CityData cityData={cityData}/>
+        : null
+      }
       </>
   )
 }

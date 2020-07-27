@@ -29,6 +29,7 @@ const Form = (props) =>  {
       };
   
       props.updateCityData(cityData);
+      props.updateIsLoading(false);
   
       handleChange("");
   
