@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
+// NEED TO WORK ON HANDLE CLICK TO GRAB XID
+
 const CityMuseums = (props) => {
 
   const { lon, lat } = props.cityData;
@@ -39,9 +41,21 @@ const CityMuseums = (props) => {
     getMuseumsList();
   }, [lat]);
 
+  const cityMuseumsCopy = [...cityMuseums];
+
   return (
     <section className='museumsList wrapper' id='listContainer'>
-      ...
+      <ul>
+        {
+          cityMuseumsCopy.map( object => {
+            return (
+              <li key={object.xid}>
+                <span><i className='fas fa-landmark'></i></span><button type='button' value={object.xid}>{object.name}</button>
+              </li>
+            )
+          })
+        }
+      </ul>
     </section>
   )
 }

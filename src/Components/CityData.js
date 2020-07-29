@@ -34,9 +34,6 @@ const CityData = (props) => {
         <CityHeader cityData={props.cityData} />
         <CityMuseums cityData={props.cityData} />
       </>
-      // <li>
-      //   <span><i className='fas fa-landmark'></i></span><button type='button' value={this.props.museumXid} onClick={this.handleClick}>{this.props.museumName}</button>
-      // </li>
     )
   }
 

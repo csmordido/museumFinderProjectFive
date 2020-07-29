@@ -23,26 +23,6 @@ class App extends Component {
   //   });
   // }
 
-  // // function to set the #listContainer's height
-  // setContainerHeight = (heightValue) => {
-  //   document.getElementById('listContainer').style.height = heightValue;
-  // }
-
-  // // function to execute when window is resized
-  // handleWindowResize = () => {
-  //   // sets isDesktop state to true if screen size is >= 940px
-  //   this.setState({
-  //     isDesktop: window.innerWidth >= 940,
-  //   });
-  //   // if device is desktop and API request has no error
-  //   if (this.state.isDesktop && this.state.museumsData.length > 0) {
-  //     // set the height of the .museumsList section to 100vh
-  //     this.setContainerHeight('100vh');
-  //   } else {
-  //     this.setContainerHeight('initial');
-  //   }
-  // }
-
   // // function passed as props to DisplayErrorMessage to update the hasError state
   // updateHasError = (value) => {
   //   this.setState({
@@ -57,22 +37,6 @@ class App extends Component {
         <Main />
           
         {/*
-          <ul>
-            {
-              // map the museumsData array and pass the object properties to the DisplayMuseumsList component
-              this.state.museumsData.map( obj => {
-                return (
-                  <DisplayMuseumsList 
-                    key={obj.xid}
-                    museumName={obj.name} 
-                    museumXid={obj.xid}
-                    onDataUpdate={this.updateMuseumDetails}
-                  />
-                )
-              })
-            }
-          </ul>
-        </section>
         {
           // map over the museumsDetails array and pass the data to the DisplayMuseumDetails component
           this.state.museumDetails.map( obj => {
