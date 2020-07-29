@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const CityHeader = (props) => {
 
   const [weatherData, updateWeatherData] = useState({});
 
-  const {name, country, lat, lon} = props.cityData;
+  const { name, country, lat, lon } = props.cityData;
 
   const getWeatherData = async () => {
-    
-    const cityLat = await lat;
-    const cityLon = await lon;
 
     try {
       const response = await axios({
@@ -18,8 +15,8 @@ const CityHeader = (props) => {
         method: 'GET',
         responseType: 'JSON',
         params: {
-          lat: cityLat,
-          lon: cityLon,
+          lat: lat,
+          lon: lon,
           units: 'metric',
           appid: 'c9a747c48bbadd82284c2f57f9cf4656',
         }
@@ -44,14 +41,16 @@ const CityHeader = (props) => {
   }, [name]);
 
   return (
-    <div className='cityInfo'>
-      <p>Museums in</p>
-      <h2>{name}, {country}</h2>
-      <div className='weather'>
-        <p>{weatherData.temp} &#8451;</p>
-        <p>{weatherData.description}</p>
+    <section>
+      <div className='cityInfo'>
+        <p>Museums in</p>
+        <h2>{name}, {country}</h2>
+        <div className='weather'>
+          <p>{weatherData.temp} &#8451;</p>
+          <p>{weatherData.description}</p>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
 

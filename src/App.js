@@ -1,73 +1,19 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 import Header from "./Components/Header";
 import Main from "./Components/Main";
-// import Form from './Components/Form';
-// import DisplayMuseumsList from './Components/DisplayMuseumsList';
-// import DisplayMuseumDetails from './Components/DisplayMuseumDetails';
-// import CityInfo from './Components/CityInfo';
-// import scrollToElement from './Components/scrollToElement';
-// import DisplayErrorMessage from './Components/DisplayErrorMessage';
 
 class App extends Component {
-  constructor () {
-    super();
+  // constructor () {
+  //   super();
 
-    this.state = {
+    // this.state = {
       // userInput: '',
       // cityInfo: [],
-      museumsData: [],
-      museumDetails: [],
-      isDesktop: false,
-      hasError: false,
-    }
-  }
-
-  // function for the second API request
-  // updateMuseumsData = (lon, lat, key) => {
-  //   axios({
-  //     url: 'https://api.opentripmap.com/0.1/en/places/radius',
-  //     method: 'GET',
-  //     responseType: 'JSON',
-  //     params: {
-  //       radius: 100000,
-  //       lon: lon,
-  //       lat: lat,
-  //       kinds: 'museums',
-  //       rate: '3',
-  //       format: 'json',
-  //       limit: 10,
-  //       apikey: key,
-  //     }
-  //   }).then( (response) => {
-  //       const newMuseumsData = [];
-  //       // push each data for the museums in the newMuseumsData array
-  //       response.data.forEach( obj => {
-  //         newMuseumsData.push(obj);
-  //       });
-  //       // update the museumsData state to newMuseumsData array
-  //       this.setState({
-  //         museumsData: newMuseumsData,
-  //       });   
-  //       // if device is desktop
-  //       if (this.state.isDesktop) {
-  //         // set the height of the .museumsList section to 100vh
-  //         this.setContainerHeight('100vh');
-  //       } else {
-  //         this.setContainerHeight('initial');
-  //       }
-  //       // scroll to #listContainer when museumsData is present
-  //       if (this.state.museumsData) {
-  //         scrollToElement('listContainer');
-  //       }
-  //   }).catch( error => {
-  //       // if error exists update hasError state to true
-  //       if (error) {
-  //         this.setState({
-  //           hasError: true,
-  //         });
-  //       }
-  //   });
+      // museumsData: [],
+      // museumDetails: [],
+      // isDesktop: false,
+      // hasError: false,
+  //   }
   // }
 
   // function passed to the DisplayMuseumsList component to update the museumDetails state
@@ -97,21 +43,6 @@ class App extends Component {
   //   }
   // }
 
-  // componentDidMount() {
-  //   // add event listener for window resize
-  //   window.addEventListener('resize', this.handleWindowResize);
-  //   const screenWidth = window.innerWidth;
-  //   // sets isDesktop state to true if screen size is >= 940px
-  //   this.setState({
-  //     isDesktop: screenWidth >= 940,
-  //   });
-  // }
-
-  // componentWillUnmount() {
-  //   // remove event listener for window resize
-  //   window.removeEventListener('resize', this.handleWindowResize);
-  // }
-
   // // function passed as props to DisplayErrorMessage to update the hasError state
   // updateHasError = (value) => {
   //   this.setState({
@@ -125,12 +56,7 @@ class App extends Component {
         <Header />
         <Main />
           
-        {/* <section className='museumsList wrapper' id='listContainer'>
-          {
-            // if the museumsData state has data display CityInfo component
-            this.state.museumsData.length > 0
-            ? <CityInfo city={this.state.cityInfo[0]} country={this.state.cityInfo[1]} /> : null
-          }
+        {/*
           <ul>
             {
               // map the museumsData array and pass the object properties to the DisplayMuseumsList component

@@ -29,8 +29,7 @@ const Form = (props) =>  {
       };
   
       props.updateCityData(cityData);
-      props.updateIsLoading(false);
-  
+
       handleChange("");
   
     } catch(err) {
@@ -39,20 +38,20 @@ const Form = (props) =>  {
   };
 
   return (
-    <form onSubmit={(event) => handleSubmit(event)} className='wrapper'> 
+    <main>
+      <form onSubmit={(event) => handleSubmit(event)} className='wrapper'> 
 
-      <label className='visuallyHidden' htmlFor='city'>Enter a city</label>
-      <input id='city' value={userInput} type='text' placeholder='Enter City' onChange={(event) => handleChange(event.target.value)} />
+        <label className='visuallyHidden' htmlFor='city'>Enter a city</label>
+        <input id='city' value={userInput} type='text' placeholder='Enter City' onChange={(event) => handleChange(event.target.value)} />
 
-      <label className='visuallyHidden' htmlFor='submit'>Search</label>
-      <input id='submit' type='submit' value='Search' />
+        <label className='visuallyHidden' htmlFor='submit'>Search</label>
+        <input id='submit' type='submit' value='Search' />
 
-      <p>Enter a city to search for museums.</p>
+        <p>Enter a city to search for museums.</p>
 
-    </form>
+      </form>
+    </main>
   )
 };
-
-
 
 export default Form;

@@ -1,7 +1,8 @@
 import React from 'react';
 // import scrollToElement from './scrollToElement';
 // import axios from 'axios';
-import CityHeader from "./CityHeader";
+import CityHeader from './CityHeader';
+import CityMuseums from './CityMuseums';
 
 // on click of the list's button
 // const handleClick = e => {
@@ -29,10 +30,10 @@ import CityHeader from "./CityHeader";
 
 const CityData = (props) => {
     return (
-      <section>
+      <>
         <CityHeader cityData={props.cityData} />
-        
-      </section>
+        <CityMuseums cityData={props.cityData} />
+      </>
       // <li>
       //   <span><i className='fas fa-landmark'></i></span><button type='button' value={this.props.museumXid} onClick={this.handleClick}>{this.props.museumName}</button>
       // </li>
