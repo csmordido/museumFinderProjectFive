@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Header from "./Components/Header";
-import Main from "./Components/Main";
+import Form from './Components/Form';
+import CityData from './Components/CityData';
 
-class App extends Component {
+const App = () => {
+
+  const [cityData, updateCityData] = useState({});
+
   // constructor () {
   //   super();
 
@@ -30,11 +34,12 @@ class App extends Component {
   //   });
   // }
 
-  render() {
     return (
       <>
         <Header />
-        <Main />
+        {/* <Main /> */}
+        <Form updateCityData={updateCityData} />
+        <CityData cityData={cityData} />
           
         {/*
         {
@@ -59,7 +64,6 @@ class App extends Component {
         } */}
       </>
     );
-  }
 }
 
 export default App;
