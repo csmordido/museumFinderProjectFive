@@ -2,8 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-// NEED TO WORK ON HANDLE CLICK TO GRAB XID
-
 const CityMuseums = (props) => {
 
   const { lon, lat } = props.cityData;
@@ -37,6 +35,11 @@ const CityMuseums = (props) => {
     }
   }
 
+  const handleClick = (event) => {
+    const xid = event.currentTarget.value;
+    props.updateXid(xid);
+  }
+
   useEffect(() => {
     getMuseumsList();
   }, [lat]);
@@ -50,7 +53,7 @@ const CityMuseums = (props) => {
           cityMuseumsCopy.map( object => {
             return (
               <li key={object.xid}>
-                <span><i className='fas fa-landmark'></i></span><button type='button' value={object.xid}>{object.name}</button>
+                <span><i className='fas fa-landmark'></i></span><button type='button' value={object.xid} onClick={handleClick}>{object.name}</button>
               </li>
             )
           })

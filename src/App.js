@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import Header from "./Components/Header";
 import Form from './Components/Form';
 import CityData from './Components/CityData';
+import MuseumDetails from './Components/MuseumDetails';
 
 const App = () => {
 
   const [cityData, updateCityData] = useState({});
+  const [xid, updateXid] = useState('');
+
 
   // constructor () {
   //   super();
@@ -37,9 +40,9 @@ const App = () => {
     return (
       <>
         <Header />
-        {/* <Main /> */}
         <Form updateCityData={updateCityData} />
-        <CityData cityData={cityData} />
+        <CityData cityData={cityData} updateXid={updateXid} />
+        <MuseumDetails xid={xid} />
           
         {/*
         {
