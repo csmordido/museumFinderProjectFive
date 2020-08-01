@@ -47,7 +47,7 @@ const CityMuseums = (props) => {
   const cityMuseumsCopy = [...cityMuseums];
 
   return (
-    <section className='museumsList wrapper' id='listContainer'>
+    <section className='museumsList wrapper'>
       <ul>
         {
           cityMuseumsCopy.map( object => {

@@ -1,6 +1,4 @@
 import React from 'react';
-// import scrollToElement from './scrollToElement';
-// import axios from 'axios';
 import CityHeader from './CityHeader';
 import CityMuseums from './CityMuseums';
 

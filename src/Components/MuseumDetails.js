@@ -5,7 +5,7 @@ import scrollToElement from './scrollToElement';
 // function to display the .museumDetails section on the page
 const MuseumDetails = (props) => {
 
-  const [museumDetails, updateMuseumDetails] = useState({});
+  const [museumDetails, updateMuseumDetails] = useState([]);
 
   // on click of the list's button
   const getMuseumDetails = async () => {
@@ -22,13 +22,17 @@ const MuseumDetails = (props) => {
         }
       });
 
-      const museumDetails = {
+      const museumDetails = [];
+
+      const newMuseumDetails = {
         address: response.data.address,
         img: response.data.preview.source,
         name: response.data.name,
         siteUrl: response.data.url,
         info: response.data.wikipedia_extracts.text,
-      }
+      };
+      
+      museumDetails.push(newMuseumDetails);
 
       updateMuseumDetails(museumDetails);
             
@@ -41,25 +45,29 @@ const MuseumDetails = (props) => {
     getMuseumDetails();
   }, [props.xid]);
 
-
-  const {img, name, siteUrl, info, address} = museumDetails;
-  console.log(address);
+  const museumDetailsCopy = [...museumDetails];
 
   return (
-    <section className='museumDetails' id='detailsContainer'>
-      <div className='wrapper museumContainer'>
-        <div className='museumImg'>
-          <img src={img} alt={name}/>
-        </div>
-        <div className='museumInfo'>
-          <h2>{name}</h2>
-          {/* <address>{address.house_number} {address.road}, {address.city}, {address.state}, {address.postcode} {address.country}</address> */}
-          <a href={siteUrl}>Visit {name}'s website</a>
-          <p>{info}
-          </p>
-          <button onClick={handleClick} type='button'>Go back to list</button>
-        </div>
-      </div>
+    <section className='museumDetails'>
+      {
+        museumDetailsCopy.map(item => {
+          return (
+            <div className='wrapper museumContainer'>
+              <div className='museumImg'>
+                <img src={item.img} alt={item.name}/>
+              </div>
+              <div className='museumInfo'>
+                <h2>{item.name}</h2>
+                <address>{item.address.house_number} {item.address.road}, {item.address.city}, {item.address.state}, {item.address.postcode} {item.address.country}</address>
+                <a href={item.siteUrl}>Visit {item.name}'s website</a>
+                <p>{item.info}
+                </p>
+                <button onClick={handleClick} type='button'>Go back to list</button>
+              </div>
+            </div>
+          )
+        })
+      }
     </section>
   )
 }
