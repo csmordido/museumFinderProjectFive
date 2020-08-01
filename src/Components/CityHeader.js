@@ -18,7 +18,7 @@ const CityHeader = (props) => {
           lat: lat,
           lon: lon,
           units: 'metric',
-          appid: 'c9a747c48bbadd82284c2f57f9cf4656',
+          appid: process.env.REACT_APP_OWM_KEY,
         }
       });
 

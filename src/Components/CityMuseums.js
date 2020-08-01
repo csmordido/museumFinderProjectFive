@@ -9,8 +9,6 @@ const CityMuseums = (props) => {
 
   const getMuseumsList = async () => {
 
-    const key = '5ae2e3f221c38a28845f05b6c25ce5d3be16ef238b3cedc588767b71';
-
     try {
       const response = await axios({
         url: 'https://api.opentripmap.com/0.1/en/places/radius',
@@ -24,7 +22,7 @@ const CityMuseums = (props) => {
           rate: '3',
           format: 'json',
           limit: 10,
-          apikey: key,
+          apikey: process.env.REACT_APP_OTM_KEY,
         }
       });
 

@@ -10,15 +10,13 @@ const MuseumDetails = (props) => {
   // on click of the list's button
   const getMuseumDetails = async () => {
 
-    const key = '5ae2e3f221c38a28845f05b6c25ce5d3be16ef238b3cedc588767b71';
-
     try {
       const response = await axios({
         url: `https://api.opentripmap.com/0.1/en/places/xid/${props.xid}`,
         method: 'GET',
         responseType: 'JSON',
         params: {
-          apikey: key,
+          apikey: process.env.REACT_APP_OTM_KEY,
         }
       });
 
@@ -52,7 +50,7 @@ const MuseumDetails = (props) => {
       {
         museumDetailsCopy.map(item => {
           return (
-            <div className='wrapper museumContainer'>
+            <div className='wrapper museumContainer' key={item.xid}>
               <div className='museumImg'>
                 <img src={item.img} alt={item.name}/>
               </div>
