@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const CityHeader = (props) => {
 
-  const [weatherData, updateWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState({});
 
   const { name, country, lat, lon } = props.cityData;
 
@@ -29,10 +29,10 @@ const CityHeader = (props) => {
         description: response.data.weather[0].main,
       }
 
-      updateWeatherData(weatherData);
+      setWeatherData(weatherData);
 
     } catch(err)  {
-      console.log(err);
+      // console.log(err);
     };
   };
 
@@ -42,7 +42,7 @@ const CityHeader = (props) => {
 
   return (
     <section>
-      <div className='cityInfo'>
+      <div className='cityInfo' id='cityInfoContainer'>
         <p>Museums in</p>
         <h2>{name}, {country}</h2>
         <div className='weather'>

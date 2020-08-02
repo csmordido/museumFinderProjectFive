@@ -5,22 +5,23 @@ const Form = (props) =>  {
 
   const [userInput, handleChange] = useState("");
 
+  // on form submit
   const handleSubmit = async (event) => {
     event.preventDefault();
   
-    const key = '5ae2e3f221c38a28845f05b6c25ce5d3be16ef238b3cedc588767b71';
     try {
-      // make an API request to grab the latitude and longitude of the user inputted city
+      // make an API request to get data on the user inputted city
       const response = await axios({
         url: 'https://api.opentripmap.com/0.1/en/places/geoname',
         method: 'GET',
         responseType: 'JSON',
         params: {
           name: userInput,
-          apikey: key,
+          apikey: process.env.REACT_APP_OTM_KEY,
         }
       });
   
+      // create an object for the needed city data
       const cityData = {
         name: response.data.name,
         country: response.data.country,
@@ -28,12 +29,14 @@ const Form = (props) =>  {
         lon: response.data.lon
       };
   
-      props.updateCityData(cityData);
+      // set the cityData state in App.js to the created cityData object
+      props.setCityData(cityData);
 
+      // clear form input
       handleChange("");
-  
+
     } catch(err) {
-      console.log(err);
+      // console.log(err);
     };
   };
 

@@ -6,7 +6,10 @@ const CityData = (props) => {
     return (
       <>
         <CityHeader cityData={props.cityData} />
-        <CityMuseums cityData={props.cityData} updateXid={props.updateXid} />
+        <CityMuseums 
+          cityData={props.cityData} 
+          setXid={props.setXid} 
+        />
       </>
     )
   }

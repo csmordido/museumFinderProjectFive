@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import scrollToElement from './scrollToElement';
 
 const CityMuseums = (props) => {
 
   const { lon, lat } = props.cityData;
-  const [cityMuseums, updateCityMuseums] = useState([]);
+  const [cityMuseums, setCityMuseums] = useState([]);
 
   const getMuseumsList = async () => {
 
@@ -26,16 +27,20 @@ const CityMuseums = (props) => {
         }
       });
 
-      updateCityMuseums(response.data);
+      setCityMuseums(response.data);
+
+      scrollToElement('cityInfoContainer');
 
     } catch(err) {
-      console.log(err);
+      // console.log(err);
     }
   }
 
   const handleClick = (event) => {
     const xid = event.currentTarget.value;
-    props.updateXid(xid);
+
+    props.setXid(xid);
+
   }
 
   useEffect(() => {

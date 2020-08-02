@@ -6,18 +6,30 @@ import MuseumDetails from './Components/MuseumDetails';
 
 const App = () => {
 
-  const [cityData, updateCityData] = useState({});
-  const [xid, updateXid] = useState('');
+  const [cityData, setCityData] = useState({});
+  const [xid, setXid] = useState('');
 
     return (
       <>
         <Header />
-        <Form updateCityData={updateCityData} />
-        <CityData cityData={cityData} updateXid={updateXid} />
-        <MuseumDetails xid={xid} />
+        <Form 
+          setCityData={setCityData} 
+          cityData={cityData} 
+        />
+        {
+          cityData.name
+          ? <CityData 
+              cityData={cityData} 
+              setXid={setXid} 
+            />
+          :null
+        }
+          <MuseumDetails xid={xid} />
+         
+        
         {/* {
           this.state.hasError
-          ? <DisplayErrorMessage updateErrorState={this.updateHasError} />
+          ? <ErrorMessage updateErrorState={this.updateHasError} />
           : null
         } */}
       </>

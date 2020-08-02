@@ -5,7 +5,7 @@ import scrollToElement from './scrollToElement';
 // function to display the .museumDetails section on the page
 const MuseumDetails = (props) => {
 
-  const [museumDetails, updateMuseumDetails] = useState([]);
+  const [museumDetails, setMuseumDetails] = useState([]);
 
   // on click of the list's button
   const getMuseumDetails = async () => {
@@ -28,15 +28,27 @@ const MuseumDetails = (props) => {
         name: response.data.name,
         siteUrl: response.data.url,
         info: response.data.wikipedia_extracts.text,
+        xid: response.data.xid
       };
       
       museumDetails.push(newMuseumDetails);
 
-      updateMuseumDetails(museumDetails);
-            
+      setMuseumDetails(museumDetails);
+
+      scrollToElement('museumDetailsContainer');
+       
     } catch(err) {
-      console.log(err);
+      // console.log(err);
     } 
+  }
+
+  // on click of the 'Go back to list' button
+  const handleClick = () => {
+    // scroll back to the museums list
+    scrollToElement('cityInfoContainer');
+    setTimeout(() => {
+      setMuseumDetails([]);
+    }, 1000)
   }
 
   useEffect(() => {
@@ -46,7 +58,7 @@ const MuseumDetails = (props) => {
   const museumDetailsCopy = [...museumDetails];
 
   return (
-    <section className='museumDetails'>
+    <section className='museumDetails' id='museumDetailsContainer'>
       {
         museumDetailsCopy.map(item => {
           return (
@@ -68,16 +80,6 @@ const MuseumDetails = (props) => {
       }
     </section>
   )
-}
-
-// on click of the 'Go back to list' button
-const handleClick = () => {
-  // scroll back to the museums list
-  scrollToElement('listContainer');
-  // hide the museum details after a second
-  setTimeout(() => {
-    document.getElementById('detailsContainer').style.display = 'none';
-  }, 1000);
 }
 
 export default MuseumDetails;
