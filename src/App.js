@@ -5,9 +5,16 @@ import CityData from './Components/CityData';
 import MuseumDetails from './Components/MuseumDetails';
 
 const App = () => {
-
+  /* State set in the Form component after the first API call.
+     Passed as props to CityData sub-components (CityHeader & CityMuseums) */
   const [cityData, setCityData] = useState({});
+
+  /* State set in the CityMuseums component on click of the museum name on the list.
+     Passed as props to MuseumDetails component */
   const [xid, setXid] = useState('');
+
+  /* State set to 'false' in the CityMuseums component on click of the museum name on the list. Then set to 'true' in the MuseumDetails component on click of the 'Go back to list' button.
+     Passed as props to MuseumDetails component */
   const [isHidden, setIsHidden] = useState(true);
 
     return (
@@ -34,8 +41,6 @@ const App = () => {
             />
           : null
         }
-         
-        
         {/* {
           this.state.hasError
           ? <ErrorMessage updateErrorState={this.updateHasError} />
