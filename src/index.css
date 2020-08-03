@@ -198,6 +198,45 @@ input[type="submit"],
   margin-right: 20px;
 }
 
+/* .itinerary styles */
+
+.itinerary {
+  padding: 0 5%;
+}
+
+.itinerary h2 {
+  text-transform: capitalize;
+  font: 700 1.7rem "Kameron", serif;
+  letter-spacing: 1.2px;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.itinerary li {
+  max-width: 400px;
+}
+
+.itinerary button {
+  all: unset;
+  background-color: #222;
+  padding: 5%;
+  margin-bottom: 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.itinerary button h3 {
+  letter-spacing: 1.2px;
+  font-weight: 700;
+}
+
+.itinerary button p {
+  font-size: 1.1rem;
+  letter-spacing: 1.2px;
+  margin-bottom: 5%;
+}
+
 /* .museumDetails styles */
 
 .museumDetails {

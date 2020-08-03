@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import firebase from '../firebase';
 import scrollToElement from './scrollToElement';
 
 const MuseumDetails = (props) => {
@@ -64,6 +65,19 @@ const MuseumDetails = (props) => {
     }, 1000);
   }
 
+  // function adding the museum to the firebase database on "Add to Itinerary" button click
+  const addMuseum = (event) => {
+
+    event.preventDefault();
+
+    // store the path to the database in a variable
+    const dbRef = firebase.database().ref();
+
+    // push the data in the museumDetails state to firebase
+    dbRef.push(...museumDetails);
+
+  }
+
   // hook to make the API request everytime the xid props updates
   useEffect(() => {
 
@@ -97,6 +111,9 @@ const MuseumDetails = (props) => {
                 </p>
 
                 <button onClick={handleClick} type='button'>Go back to list</button>
+
+                <button onClick={addMuseum} type='button'>Add to Itinerary</button>
+
 
               </div>
 

@@ -4,6 +4,7 @@ import Form from './Components/Form';
 import CityData from './Components/CityData';
 import MuseumDetails from './Components/MuseumDetails';
 import ErrorMessage from './Components/ErrorMessage';
+import Itinerary from './Components/Itinerary';
 
 const App = () => {
 
@@ -35,6 +36,7 @@ const App = () => {
             />
           :null
         }
+        <Itinerary />
         {
           !isHidden
           ? <MuseumDetails 
