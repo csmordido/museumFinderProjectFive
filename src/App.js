@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import Form from './Components/Form';
 import CityData from './Components/CityData';
 import MuseumDetails from './Components/MuseumDetails';
+import ErrorMessage from './Components/ErrorMessage';
 
 const App = () => {
 
@@ -17,16 +18,20 @@ const App = () => {
   /* State set to 'false' in the CityMuseums component on click of the museum name. Then set to 'true' in the MuseumDetails component on click of the 'Go back to list' button. */ 
   const [isHidden, setIsHidden] = useState(true);
 
+  const [hasError, setHasError] = useState(false);
+
+
     return (
       <>
         <Header />
-        <Form setCityData={setCityData} />
+        <Form setCityData={setCityData} setHasError={setHasError} />
         {
           cityData.name
           ? <CityData 
               cityData={cityData} 
               setXid={setXid} 
               setIsHidden={setIsHidden}
+              setHasError={setHasError}
             />
           :null
         }
@@ -35,14 +40,15 @@ const App = () => {
           ? <MuseumDetails 
               xid={xid} 
               setIsHidden={setIsHidden}
+              setHasError={setHasError}
             />
           : null
         }
-        {/* {
-          this.state.hasError
-          ? <ErrorMessage updateErrorState={this.updateHasError} />
+         {
+          hasError
+          ? <ErrorMessage setHasError={setHasError} />
           : null
-        } */}
+        }
       </>
     );
     

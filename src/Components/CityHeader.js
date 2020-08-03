@@ -38,7 +38,9 @@ const CityHeader = (props) => {
       setWeatherData(weatherData);
 
     } catch(err)  {
-      // console.log(err);
+
+      console.log(err);
+
     };
 
   };
