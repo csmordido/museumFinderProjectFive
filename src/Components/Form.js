@@ -3,14 +3,17 @@ import axios from 'axios';
 
 const Form = (props) =>  {
 
+  // State tracking the user input.
   const [userInput, handleChange] = useState("");
 
-  // on form submit
+  // On form submit
   const handleSubmit = async (event) => {
+
+    // prevent the default page refresh event
     event.preventDefault();
   
     try {
-      // make an API request to get data on the user inputted city
+      // make an API request to get data on the user inputted city and wait for the promise to be fulfilled
       const response = await axios({
         url: 'https://api.opentripmap.com/0.1/en/places/geoname',
         method: 'GET',
@@ -21,7 +24,7 @@ const Form = (props) =>  {
         }
       });
   
-      // create an object for the needed city data
+      // organize the needed data from the API response in an object
       const cityData = {
         name: response.data.name,
         country: response.data.country,
@@ -29,15 +32,16 @@ const Form = (props) =>  {
         lon: response.data.lon
       };
   
-      // set the cityData state in App.js to the created cityData object
+      // set the cityData state in App.js to the cityData object
       props.setCityData(cityData);
 
-      // clear form input
+      // set the userInput to an empty string
       handleChange("");
 
     } catch(err) {
       // console.log(err);
     };
+    
   };
 
   return (
@@ -55,6 +59,7 @@ const Form = (props) =>  {
       </form>
     </main>
   )
+
 };
 
 export default Form;

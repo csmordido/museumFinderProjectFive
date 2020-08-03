@@ -3,6 +3,7 @@ import CityHeader from './CityHeader';
 import CityMuseums from './CityMuseums';
 
 const CityData = (props) => {
+
     return (
       <>
         <CityHeader cityData={props.cityData} />
@@ -13,6 +14,7 @@ const CityData = (props) => {
         />
       </>
     )
+    
   }
 
 export default CityData;
