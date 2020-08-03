@@ -8,6 +8,7 @@ const App = () => {
 
   const [cityData, setCityData] = useState({});
   const [xid, setXid] = useState('');
+  const [isHidden, setIsHidden] = useState(true);
 
     return (
       <>
@@ -21,10 +22,18 @@ const App = () => {
           ? <CityData 
               cityData={cityData} 
               setXid={setXid} 
+              setIsHidden={setIsHidden}
             />
           :null
         }
-          <MuseumDetails xid={xid} />
+        {
+          !isHidden
+          ? <MuseumDetails 
+              xid={xid} 
+              setIsHidden={setIsHidden}
+            />
+          : null
+        }
          
         
         {/* {

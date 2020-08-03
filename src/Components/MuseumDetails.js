@@ -46,9 +46,10 @@ const MuseumDetails = (props) => {
   const handleClick = () => {
     // scroll back to the museums list
     scrollToElement('cityInfoContainer');
+    
     setTimeout(() => {
-      setMuseumDetails([]);
-    }, 1000)
+      props.setIsHidden(true);
+    }, 1000);
   }
 
   useEffect(() => {

@@ -9,6 +9,7 @@ const CityData = (props) => {
         <CityMuseums 
           cityData={props.cityData} 
           setXid={props.setXid} 
+          setIsHidden={props.setIsHidden}
         />
       </>
     )

@@ -41,6 +41,8 @@ const CityMuseums = (props) => {
 
     props.setXid(xid);
 
+    props.setIsHidden(false);
+
   }
 
   useEffect(() => {
