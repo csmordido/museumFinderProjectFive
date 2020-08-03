@@ -44,7 +44,11 @@ const CityMuseums = (props) => {
       scrollToElement('cityInfoContainer');
 
     } catch(err) {
-      // console.log(err);
+
+      console.log(err);
+
+      props.setHasError(true);
+
     }
 
   };

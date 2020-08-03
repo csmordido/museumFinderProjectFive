@@ -11,6 +11,7 @@ const CityData = (props) => {
           cityData={props.cityData} 
           setXid={props.setXid} 
           setIsHidden={props.setIsHidden}
+          setHasError={props.setHasError}
         />
       </>
     )

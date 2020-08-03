@@ -23,7 +23,7 @@ const MuseumDetails = (props) => {
       // create an empty array to push the API data into
       const museumDetails = [];
 
-      // organize the API data into an object
+      // organize the needed API data into an object
       const newMuseumDetails = {
         address: response.data.address,
         img: response.data.preview.source,
@@ -43,7 +43,11 @@ const MuseumDetails = (props) => {
       scrollToElement('museumDetailsContainer');
        
     } catch(err) {
-      // console.log(err);
+
+      console.log(err);
+
+      props.setHasError(true);
+
     } 
 
   }

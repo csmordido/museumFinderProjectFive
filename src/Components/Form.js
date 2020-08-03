@@ -39,7 +39,11 @@ const Form = (props) =>  {
       handleChange("");
 
     } catch(err) {
-      // console.log(err);
+      
+      console.log(err);
+
+      props.setHasError(true);
+
     };
     
   };
