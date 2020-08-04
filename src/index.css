@@ -198,13 +198,13 @@ input[type="submit"],
   margin-right: 20px;
 }
 
-/* .itinerary styles */
+/* .saved styles */
 
-.itinerary {
-  padding: 0 5%;
+.saved {
+  padding: 0 5% 50px 5%;
 }
 
-.itinerary h2 {
+.saved h2 {
   text-transform: capitalize;
   font: 700 1.7rem "Kameron", serif;
   letter-spacing: 1.2px;
@@ -212,29 +212,35 @@ input[type="submit"],
   padding: 50px 0;
 }
 
-.itinerary li {
-  max-width: 400px;
-}
-
-.itinerary button {
+.saved button {
   all: unset;
   background-color: #222;
   padding: 5%;
-  margin-bottom: 20px;
+  margin: 0 auto 20px auto;
   text-align: center;
   cursor: pointer;
   border-radius: 5px;
+  max-width: 294px;
+  height: 335px;
+  overflow: scroll;
+  display: block;
 }
 
-.itinerary button h3 {
+.saved button h3 {
   letter-spacing: 1.2px;
   font-weight: 700;
 }
 
-.itinerary button p {
+.saved button p {
   font-size: 1.1rem;
   letter-spacing: 1.2px;
   margin-bottom: 5%;
+}
+
+.saved button img {
+  max-width: 300px;
+  object-fit: cover;
+  margin: 0 auto;
 }
 
 /* .museumDetails styles */
@@ -317,6 +323,21 @@ input[type="submit"],
   }
 
   .museumsList li {
+    flex: 1 0 50%;
+  }
+
+  .saved h2 {
+    padding: 80px 0;
+  }
+
+  .saved ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .saved li {
     flex: 1 0 50%;
   }
 
@@ -405,6 +426,21 @@ input[type="submit"],
     padding: 50px 5% 50px 5%;
   }
 
+  .saved {
+    background: #222;
+  }
+
+  .saved button {
+    background-color: #444;
+    color: #b7b7b7;
+    transition: box-shadow 0.4s;
+  }
+
+  .saved button:hover,
+  .saved button:focus {
+    box-shadow: -8px 8px 8px rgba(00, 00, 00, 0.5);
+  }
+
   .museumDetails {
     padding: initial;
   }
@@ -436,5 +472,15 @@ input[type="submit"],
   .museumInfo button {
     margin-top: 20px;
     width: 220px;
+  }
+
+  .museumInfo button:first-of-type {
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 1290px) {
+  .saved li {
+    flex: 0 0 33.3%;
   }
 }

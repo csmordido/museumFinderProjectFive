@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../firebase';
 
-const Itinerary = () => {
+const Saved = () => {
 
   const [museums, setMuseums] = useState([]);
 
@@ -16,9 +16,9 @@ const Itinerary = () => {
       const data = response.val();
 
       for (let key in data) {
-        data[key].map( object => {
-          newMuseums.push(object);
-        })
+        
+        newMuseums.push(data[key]);
+        
       }
 
       setMuseums(newMuseums);
@@ -30,12 +30,12 @@ const Itinerary = () => {
   const museumsCopy = [...museums];
 
   return (
-    <section className='itinerary wrapper'>
+    <section className='saved'>
 
-      <h2>Museums Itinerary</h2>
+      <h2>Saved Museums</h2>
 
-      <ul>
-        
+      <ul className='wrapper'>
+
         {
           museumsCopy.map( object => {
               return (
@@ -59,4 +59,4 @@ const Itinerary = () => {
 
 }
 
-export default Itinerary;
+export default Saved;

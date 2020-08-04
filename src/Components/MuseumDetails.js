@@ -112,7 +112,7 @@ const MuseumDetails = (props) => {
 
                 <button onClick={handleClick} type='button'>Go back to list</button>
 
-                <button onClick={addMuseum} type='button'>Add to Itinerary</button>
+                <button onClick={addMuseum} type='button'>Save museum</button>
 
 
               </div>
