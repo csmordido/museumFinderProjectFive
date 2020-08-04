@@ -216,7 +216,7 @@ input[type="submit"],
   all: unset;
   background-color: #222;
   padding: 5%;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 30px auto;
   text-align: center;
   cursor: pointer;
   border-radius: 5px;
@@ -480,6 +480,10 @@ input[type="submit"],
 }
 
 @media (min-width: 1290px) {
+  .wrapper {
+    width: 100%;
+  }
+
   .saved li {
     flex: 0 0 33.3%;
   }

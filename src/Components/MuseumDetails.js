@@ -49,9 +49,9 @@ const MuseumDetails = (props) => {
 
       props.setHasError(true);
 
-    } 
+    };
 
-  }
+  };
 
   // on click of the 'Go back to list' button
   const handleClick = () => {
@@ -65,7 +65,7 @@ const MuseumDetails = (props) => {
     }, 1000);
   }
 
-  // function adding the museum to the firebase database on "Add to Itinerary" button click
+  // function adding the museum to the firebase database on "Save Museum" button click
   const addMuseum = (event) => {
 
     event.preventDefault();
@@ -73,7 +73,7 @@ const MuseumDetails = (props) => {
     // store the path to the database in a variable
     const dbRef = firebase.database().ref();
 
-    // push the data in the museumDetails state to firebase
+    // push each of the array item in the museumDetails state to firebase
     dbRef.push(...museumDetails);
 
   }
