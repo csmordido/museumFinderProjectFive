@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-  // Your web app's Firebase configuration
+  // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyCgo__XjZygSR0XWEphiMiwPuOjNxefH0Y",
     authDomain: "museumfinder-3d651.firebaseapp.com",
