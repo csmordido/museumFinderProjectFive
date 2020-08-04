@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../firebase';
+import SavedModal from './SavedModal';
 
 const Saved = () => {
 
   const [museums, setMuseums] = useState([]);
+
+  const [museumDetails, setMuseumDetails] = useState([]);
 
   // hook to pull database data on page load
   useEffect(() => {
@@ -37,6 +40,18 @@ const Saved = () => {
   // make a copy of the museums state to map over it
   const museumsCopy = [...museums];
 
+  const handleClick = (event) => {
+
+    const xid = event.currentTarget.value;
+
+    const museumDetails = museumsCopy.filter( object => object.xid === xid );
+
+    setMuseumDetails(museumDetails);
+
+  };
+
+  const museumDetailsCopy = [...museumDetails];
+
   return (
     <section className='saved'>
 
@@ -49,7 +64,7 @@ const Saved = () => {
               return (
                 <li key={object.xid}>
 
-                  <button type='button'>
+                  <button type='button' value={object.xid} onClick={handleClick}>
                     <h3>{object.name}</h3> 
                     <p>{object.address.city}, {object.address.country_code.toUpperCase()} </p>
                     <img src={object.img} alt={object.name}/>
@@ -61,6 +76,8 @@ const Saved = () => {
         }
 
       </ul>
+
+      <SavedModal museumDetails={museumDetailsCopy} setMuseumDetails={setMuseumDetails} />
 
     </section>
   )
