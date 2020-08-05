@@ -73,8 +73,11 @@ const MuseumDetails = (props) => {
     // store the path to the database in a variable
     const dbRef = firebase.database().ref();
 
+    // remove undefined object properties
+    const modObject = JSON.parse( JSON.stringify(...museumDetails));
+
     // push each of the array item in the museumDetails state to firebase
-    dbRef.push(...museumDetails);
+    dbRef.push(modObject);
 
   }
 
