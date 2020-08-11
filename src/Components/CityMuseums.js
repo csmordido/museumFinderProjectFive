@@ -26,7 +26,7 @@ const CityMuseums = (props) => {
           kinds: 'museums',
           rate: '3',
           format: 'json',
-          limit: 10,
+          limit: 20,
           apikey: process.env.REACT_APP_OTM_KEY,
         }
       });

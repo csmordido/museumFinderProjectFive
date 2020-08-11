@@ -40,16 +40,26 @@ const Saved = () => {
   // make a copy of the museums state to map over it
   const museumsCopy = [...museums];
 
-  const handleClick = (event) => {
+  // sets the museumDetails state with the details of the clicked museum card and renders the modal
+  const openModal = (xid) => {
 
-    const xid = event.currentTarget.value;
-
+    // filters the museumsCopy array for the details of the clicked museum using the xid of the clicked museum card
     const museumDetails = museumsCopy.filter( object => object.data.xid === xid );
 
+    // set the museumDetails state to the details object of the clicked museum card
     setMuseumDetails(museumDetails);
 
   };
 
+  const deleteMuseum = (firebaseKey) => {
+
+    const dbRef = firebase.database().ref();
+
+    dbRef.child(firebaseKey).remove();
+
+  }
+
+  // copy of the museumDetails array
   const museumDetailsCopy = [...museumDetails];
 
   return (
@@ -64,7 +74,9 @@ const Saved = () => {
               return (
                 <li key={object.key}>
 
-                  <button type='button' value={object.data.xid} onClick={handleClick}>
+                  <button className='delete' onClick={() => deleteMuseum(object.key)} type='button'>X</button>
+
+                  <button type='button' onClick={() => openModal(object.data.xid)}>
                     <h3>{object.data.name}</h3> 
                     <p>{object.data.address.city}, {object.data.address.country_code.toUpperCase()} </p>
                     <img src={object.data.img} alt={object.data.name}/>

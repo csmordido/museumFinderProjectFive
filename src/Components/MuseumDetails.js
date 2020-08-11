@@ -107,7 +107,7 @@ const MuseumDetails = (props) => {
 
               <div className='museumInfo'>
 
-                <h2>{item.name}</h2>
+                <h3>{item.name}</h3>
                 <address>{item.address.house_number} {item.address.road}, {item.address.city}, {item.address.state}, {item.address.postcode} {item.address.country}</address>
                 <a href={item.siteUrl}>Visit {item.name}'s website</a>
                 <p>{item.info}

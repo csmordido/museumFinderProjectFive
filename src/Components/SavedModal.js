@@ -27,7 +27,7 @@ const SavedModal = (props) => {
 
               <div className='museumInfo'>
 
-                <h2>{item.data.name}</h2>
+                <h3>{item.data.name}</h3>
                 <address>{item.data.address.house_number} {item.data.address.road}, {item.data.address.city}, {item.data.address.state}, {item.data.address.postcode} {item.data.address.country}</address>
                 <a href={item.data.siteUrl}>Visit {item.data.name}'s website</a>
                 <p>{item.data.info}
