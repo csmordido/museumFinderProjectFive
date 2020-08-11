@@ -26,7 +26,7 @@ const Saved = () => {
       for (let key in data) {
         
         // and push each item into the newMuseums array
-        newMuseums.push(data[key]);
+        newMuseums.push({key: key, data: data[key]});
         
       };
 
@@ -44,7 +44,7 @@ const Saved = () => {
 
     const xid = event.currentTarget.value;
 
-    const museumDetails = museumsCopy.filter( object => object.xid === xid );
+    const museumDetails = museumsCopy.filter( object => object.data.xid === xid );
 
     setMuseumDetails(museumDetails);
 
@@ -62,12 +62,12 @@ const Saved = () => {
         {
           museumsCopy.map( object => {
               return (
-                <li key={object.xid}>
+                <li key={object.key}>
 
-                  <button type='button' value={object.xid} onClick={handleClick}>
-                    <h3>{object.name}</h3> 
-                    <p>{object.address.city}, {object.address.country_code.toUpperCase()} </p>
-                    <img src={object.img} alt={object.name}/>
+                  <button type='button' value={object.data.xid} onClick={handleClick}>
+                    <h3>{object.data.name}</h3> 
+                    <p>{object.data.address.city}, {object.data.address.country_code.toUpperCase()} </p>
+                    <img src={object.data.img} alt={object.data.name}/>
                   </button>
                   
                 </li>

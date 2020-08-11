@@ -17,20 +17,20 @@ const SavedModal = (props) => {
 
           return (
 
-            <div className='wrapper museumContainer savedMuseumDetails' key={item.xid}>
+            <div className='wrapper museumContainer savedMuseumDetails' key={item.key}>
 
               <button onClick={handleClick} type='button'>X</button>
 
               <div className='museumImg'>
-                <img src={item.img} alt={item.name}/>
+                <img src={item.data.img} alt={item.data.name}/>
               </div>
 
               <div className='museumInfo'>
 
-                <h2>{item.name}</h2>
-                <address>{item.address.house_number} {item.address.road}, {item.address.city}, {item.address.state}, {item.address.postcode} {item.address.country}</address>
-                <a href={item.siteUrl}>Visit {item.name}'s website</a>
-                <p>{item.info}
+                <h2>{item.data.name}</h2>
+                <address>{item.data.address.house_number} {item.data.address.road}, {item.data.address.city}, {item.data.address.state}, {item.data.address.postcode} {item.data.address.country}</address>
+                <a href={item.data.siteUrl}>Visit {item.data.name}'s website</a>
+                <p>{item.data.info}
                 </p>
 
               </div>
