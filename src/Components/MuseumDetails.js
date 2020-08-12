@@ -54,7 +54,7 @@ const MuseumDetails = (props) => {
   };
 
   // on click of the 'Go back to list' button
-  const handleClick = () => {
+  const backToList = () => {
 
     // scroll back to the #cityInfoContainer div
     scrollToElement('cityInfoContainer');
@@ -73,8 +73,11 @@ const MuseumDetails = (props) => {
     // store the path to the database in a variable
     const dbRef = firebase.database().ref();
 
+    // remove undefined or null object properties
+    const modObject = JSON.parse( JSON.stringify(...museumDetails));
+
     // push each of the array item in the museumDetails state to firebase
-    dbRef.push(...museumDetails);
+    dbRef.push(modObject);
 
   }
 
@@ -104,13 +107,13 @@ const MuseumDetails = (props) => {
 
               <div className='museumInfo'>
 
-                <h2>{item.name}</h2>
+                <h3>{item.name}</h3>
                 <address>{item.address.house_number} {item.address.road}, {item.address.city}, {item.address.state}, {item.address.postcode} {item.address.country}</address>
                 <a href={item.siteUrl}>Visit {item.name}'s website</a>
                 <p>{item.info}
                 </p>
 
-                <button onClick={handleClick} type='button'>Go back to list</button>
+                <button onClick={backToList} type='button'>Go back to list</button>
 
                 <button onClick={addMuseum} type='button'>Save museum</button>
 

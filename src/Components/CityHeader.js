@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const CityHeader = (props) => {
 
+  // state containing weather information from the Open Weather Map API
   const [weatherData, setWeatherData] = useState({});
 
   // deconstruct the cityData props passed from App.js

@@ -5,6 +5,7 @@ import scrollToElement from './scrollToElement';
 
 const CityMuseums = (props) => {
 
+  // state containing the museum objects from the Open Trip Map API
   const [cityMuseums, setCityMuseums] = useState([]);
 
   // deconstruct the cityData props
@@ -26,7 +27,7 @@ const CityMuseums = (props) => {
           kinds: 'museums',
           rate: '3',
           format: 'json',
-          limit: 10,
+          limit: 20,
           apikey: process.env.REACT_APP_OTM_KEY,
         }
       });
@@ -54,9 +55,7 @@ const CityMuseums = (props) => {
   };
 
   // function executed on click of a museum name
-  const handleClick = (event) => {
-    // store the value (which is the xid) of the clicked museum in the xid variable
-    const xid = event.currentTarget.value;
+  const getMuseumXid = (xid) => {
 
     // hook passed as props from App.js component to set the xid state
     props.setXid(xid);
@@ -87,7 +86,7 @@ const CityMuseums = (props) => {
             return (
 
               <li key={object.xid}>
-                <span><i className='fas fa-landmark'></i></span><button type='button' value={object.xid} onClick={handleClick}>{object.name}</button>
+                <span><i className='fas fa-landmark'></i></span><button type='button'  onClick={() => getMuseumXid(object.xid)}>{object.name}</button>
               </li>
 
             )

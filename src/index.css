@@ -213,6 +213,25 @@ input[type="submit"],
   padding: 50px 0;
 }
 
+.saved li {
+  position: relative;
+}
+
+.saved .delete {
+  all: unset;
+  position: absolute;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  background-color: #b7b7b7;
+  color: #444;
+  border-radius: 50%;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
 .saved button {
   all: unset;
   background-color: #222;
@@ -257,7 +276,6 @@ input[type="submit"],
 }
 
 .savedMuseumDetails button {
-  padding: 0;
   all: unset;
   text-align: center;
   width: 40px;
@@ -287,7 +305,7 @@ input[type="submit"],
   margin: 0 auto;
 }
 
-.museumInfo h2 {
+.museumInfo h3 {
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 1.2px;
