@@ -31,6 +31,8 @@ const App = () => {
         <Form setCityData={setCityData} setHasError={setHasError} />
         <Router>
           <>
+            <Link to='/'>Home</Link>
+            <Link to='/saved-museums'>Saved Museums</Link>
             <Route path='/'
               render={ () => {
                 return (
