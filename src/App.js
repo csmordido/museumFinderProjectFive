@@ -21,7 +21,7 @@ const App = () => {
   const [isHidden, setIsHidden] = useState(true);
 
   /* State set to 'true' when error exists in each of the API requests. Then set to 'false' on click of the 'Close Window' button in the ErrorMessage component.  
-  Controlls visibility of the ErrorMessage component. */ 
+  Controls visibility of the ErrorMessage component. */ 
   const [hasError, setHasError] = useState(false);
 
 

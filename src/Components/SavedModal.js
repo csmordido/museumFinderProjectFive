@@ -2,8 +2,10 @@ import React from 'react';
 
 const SavedModal = (props) => {
 
-  const handleClick = () => {
+  // function to close the modal
+  const closeModal = () => {
 
+    // set the museumDetails state in the Saved component to an empty array
     props.setMuseumDetails([]);
 
   }
@@ -19,7 +21,7 @@ const SavedModal = (props) => {
 
             <div className='wrapper museumContainer savedMuseumDetails' key={item.key}>
 
-              <button onClick={handleClick} type='button'>X</button>
+              <button onClick={closeModal} type='button'>X</button>
 
               <div className='museumImg'>
                 <img src={item.data.img} alt={item.data.name}/>

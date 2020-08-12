@@ -54,7 +54,7 @@ const MuseumDetails = (props) => {
   };
 
   // on click of the 'Go back to list' button
-  const handleClick = () => {
+  const backToList = () => {
 
     // scroll back to the #cityInfoContainer div
     scrollToElement('cityInfoContainer');
@@ -113,7 +113,7 @@ const MuseumDetails = (props) => {
                 <p>{item.info}
                 </p>
 
-                <button onClick={handleClick} type='button'>Go back to list</button>
+                <button onClick={backToList} type='button'>Go back to list</button>
 
                 <button onClick={addMuseum} type='button'>Save museum</button>
 

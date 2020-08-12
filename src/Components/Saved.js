@@ -4,8 +4,10 @@ import SavedModal from './SavedModal';
 
 const Saved = () => {
 
+  // State storing the museums in an array from the database. Set in the useEffect hook.
   const [museums, setMuseums] = useState([]);
 
+  // State storing the details of the clicked museum card to render the modal.
   const [museumDetails, setMuseumDetails] = useState([]);
 
   // hook to pull database data on page load
@@ -51,10 +53,13 @@ const Saved = () => {
 
   };
 
+  // function to delete museum in the firebase database
   const deleteMuseum = (firebaseKey) => {
 
+    // store the path to the database in the dbRef variable
     const dbRef = firebase.database().ref();
 
+    // use the unique key from the database to delete the clicked museum
     dbRef.child(firebaseKey).remove();
 
   }
