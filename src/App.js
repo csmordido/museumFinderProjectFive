@@ -29,17 +29,24 @@ const App = () => {
       <>
         <Header />
         <Form setCityData={setCityData} setHasError={setHasError} />
-        {
-          cityData.name
-          ? <CityData 
-              cityData={cityData} 
-              setXid={setXid} 
-              setIsHidden={setIsHidden}
-              setHasError={setHasError}
-            />
-          :null
-        }
-        <Saved />
+        <Router>
+          <>
+            <Route path='/'
+              render={ () => {
+                return (
+                  cityData.name
+                  ? <CityData 
+                      cityData={cityData} 
+                      setXid={setXid} 
+                      setIsHidden={setIsHidden}
+                      setHasError={setHasError}
+                    />
+                  :null
+                  )
+            }}/>
+            <Route exact path='/saved-museums' component={Saved} />
+          </>
+        </Router>
         {
           !isHidden
           ? <MuseumDetails 
