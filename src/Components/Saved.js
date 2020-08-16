@@ -4,7 +4,7 @@ import SavedModal from './SavedModal';
 
 const Saved = () => {
 
-  // State storing the museums in an array from the database. Set in the useEffect hook.
+  // State storing the museums object from the database. Set in the useEffect hook.
   const [museums, setMuseums] = useState([]);
 
   // State storing the details of the clicked museum card to render the modal.
