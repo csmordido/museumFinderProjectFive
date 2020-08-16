@@ -4,7 +4,7 @@ import axios from 'axios';
 const Form = (props) =>  {
 
   // State tracking the user input.
-  const [userInput, handleChange] = useState("");
+  const [userInput, setUserInput] = useState("");
 
   // On form submit
   const handleSubmit = async (event) => {
@@ -36,7 +36,7 @@ const Form = (props) =>  {
       props.setCityData(cityData);
 
       // set the userInput to an empty string
-      handleChange("");
+      setUserInput("");
 
     } catch(err) {
       
@@ -53,7 +53,7 @@ const Form = (props) =>  {
       <form onSubmit={(event) => handleSubmit(event)} className='wrapper'> 
 
         <label className='visuallyHidden' htmlFor='city'>Enter a city</label>
-        <input id='city' value={userInput} type='text' placeholder='Enter City' onChange={(event) => handleChange(event.target.value)} />
+        <input id='city' value={userInput} type='text' placeholder='Enter City' onChange={(event) => setUserInput(event.target.value)} />
 
         <label className='visuallyHidden' htmlFor='submit'>Search</label>
         <input id='submit' type='submit' value='Search' />

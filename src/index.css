@@ -131,17 +131,24 @@ input[type="submit"],
 
 .savedNav {
   position: fixed;
-  top: 5%;
-  right: 5%;
+  top: 4%;
+  right: 0;
   z-index: 10;
+  text-align: right;
 }
 
 .savedNav a {
   text-decoration: none;
   color: #b7b7b7;
-  letter-spacing: 1.2px;
+  letter-spacing: 1.3px;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
+  display: inline-block;
+  border-radius: 20px 0 0 20px;
+  max-width: 120px;
+  line-height: 1.1;
+  background-color: #444;
+  padding: 5px 20px;
 }
 
 /* .cityInfo styles */
@@ -373,6 +380,16 @@ input[type="submit"],
 
   form {
     padding: 0 20%;
+  }
+
+  .savedNav {
+    top: 5%;
+  }
+
+  .savedNav a {
+    max-width: initial;
+    font-size: 1.1rem;
+    padding: 5px 30px;
   }
 
   .cityInfo {

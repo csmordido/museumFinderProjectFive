@@ -68,7 +68,7 @@ const Saved = () => {
   const museumDetailsCopy = [...museumDetails];
 
   return (
-    <section className='saved'>
+    <section className='saved' id='savedSection'>
 
       <h2>Saved Museums</h2>
 
