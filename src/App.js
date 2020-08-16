@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import Header from "./Components/Header";
 import Form from './Components/Form';
 import CityData from './Components/CityData';
@@ -20,7 +20,7 @@ const App = () => {
   /* State set to 'false' in the CityMuseums component on click of the museum name. Then set to 'true' in the MuseumDetails component on click of the 'Go back to list' button. Controlls visibility of the MuseumDetails component. */ 
   const [isHidden, setIsHidden] = useState(true);
 
-  /* State set to 'true' when error exists in each of the API requests. Then set to 'false' on click of the 'Close Window' button in the ErrorMessage component.  
+  /* State set to 'true' if error exists in each of the API requests. Then set to 'false' on click of the 'Close Window' button in the ErrorMessage component.  
   Controls visibility of the ErrorMessage component. */ 
   const [hasError, setHasError] = useState(false);
 
@@ -31,8 +31,10 @@ const App = () => {
         <Form setCityData={setCityData} setHasError={setHasError} />
         <Router>
           <>
-            <Link to='/'>Home</Link>
-            <Link to='/saved-museums'>Saved Museums</Link>
+            <nav className='mainNav'>
+              <NavLink to='/'>Home</NavLink>
+              <NavLink to='/saved-museums'>Show Saved Museums</NavLink>
+            </nav>
             <Route path='/'
               render={ () => {
                 return (
@@ -46,19 +48,19 @@ const App = () => {
                   :null
                   )
             }}/>
+            {
+              !isHidden
+              ? <MuseumDetails 
+              xid={xid} 
+              setIsHidden={setIsHidden}
+              setHasError={setHasError}
+              />
+              : null
+            }
             <Route exact path='/saved-museums' component={Saved} />
           </>
         </Router>
         {
-          !isHidden
-          ? <MuseumDetails 
-              xid={xid} 
-              setIsHidden={setIsHidden}
-              setHasError={setHasError}
-            />
-          : null
-        }
-         {
           hasError
           ? <ErrorMessage setHasError={setHasError} />
           : null
