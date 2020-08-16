@@ -127,13 +127,21 @@ input[type="submit"],
   opacity: 1;
 }
 
-/* .mainNav styles */
+/* .savedNav styles */
 
-.mainNav {
+.savedNav {
   position: fixed;
-  top: 3%;
-  right: 3%;
+  top: 5%;
+  right: 5%;
   z-index: 10;
+}
+
+.savedNav a {
+  text-decoration: none;
+  color: #b7b7b7;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 /* .cityInfo styles */

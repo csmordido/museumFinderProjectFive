@@ -1,14 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
-const Nav = () => {
+const Nav = (props) => {
+
   return (
-    <Router>
-      <nav>
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/saved-museums'>Saved Museums</NavLink>
-      </nav>
-    </Router>
+    <nav className='savedNav'>
+      <a href='#' onClick={() => props.setSavedIsHidden(props.savedIsHidden ? false : true)}>{props.savedIsHidden ? 'Saved Museums' : 'Close'}</a>
+    </nav>
   )
 };
 

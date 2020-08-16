@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import Header from "./Components/Header";
 import Form from './Components/Form';
 import CityData from './Components/CityData';
 import MuseumDetails from './Components/MuseumDetails';
 import ErrorMessage from './Components/ErrorMessage';
 import Saved from './Components/Saved';
+import Nav from './Components/Nav';
 
 const App = () => {
 
@@ -24,42 +24,41 @@ const App = () => {
   Controls visibility of the ErrorMessage component. */ 
   const [hasError, setHasError] = useState(false);
 
+  /* Toggles the visibility of the Saved component. Passed to the Nav component as props and changed on click of the anchor */
+  const [savedIsHidden, setSavedIsHidden] = useState(true);
 
     return (
       <>
+        <Nav 
+          savedIsHidden={savedIsHidden} 
+          setSavedIsHidden={setSavedIsHidden}
+        />
         <Header />
         <Form setCityData={setCityData} setHasError={setHasError} />
-        <Router>
-          <>
-            <nav className='mainNav'>
-              <NavLink to='/'>Home</NavLink>
-              <NavLink to='/saved-museums'>Show Saved Museums</NavLink>
-            </nav>
-            <Route path='/'
-              render={ () => {
-                return (
-                  cityData.name
-                  ? <CityData 
-                      cityData={cityData} 
-                      setXid={setXid} 
-                      setIsHidden={setIsHidden}
-                      setHasError={setHasError}
-                    />
-                  :null
-                  )
-            }}/>
-            {
-              !isHidden
-              ? <MuseumDetails 
-              xid={xid} 
+        {
+          cityData.name
+          ? <CityData 
+              cityData={cityData} 
+              setXid={setXid} 
               setIsHidden={setIsHidden}
               setHasError={setHasError}
-              />
-              : null
-            }
-            <Route exact path='/saved-museums' component={Saved} />
-          </>
-        </Router>
+            />
+          :null
+        }
+        {
+          !isHidden
+          ? <MuseumDetails 
+          xid={xid} 
+          setIsHidden={setIsHidden}
+          setHasError={setHasError}
+          />
+          : null
+        }
+        {
+          !savedIsHidden
+          ? <Saved />
+          : null          
+        }
         {
           hasError
           ? <ErrorMessage setHasError={setHasError} />
