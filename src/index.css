@@ -476,7 +476,8 @@ input[type="submit"],
     padding-bottom: 100px;
   }
 
-  .museumsList button {
+  .museumsList button,
+  .savedNav a {
     transition: letter-spacing 0.6s;
   }
 
@@ -487,7 +488,9 @@ input[type="submit"],
   .museumsList button:hover,
   .museumsList button:focus,
   .errorMessage button:hover,
-  .errorMessage button:focus {
+  .errorMessage button:focus,
+  .savedNav a:hover,
+  .savedNav a:focus {
     letter-spacing: 3px;
   }
 
