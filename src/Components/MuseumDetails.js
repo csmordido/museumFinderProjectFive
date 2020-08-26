@@ -21,6 +21,8 @@ const MuseumDetails = (props) => {
         }
       });
 
+      console.log('Details:', response);
+
       // create an empty array to push the API data into
       const museumDetails = [];
 
@@ -31,7 +33,9 @@ const MuseumDetails = (props) => {
         name: response.data.name,
         siteUrl: response.data.url,
         info: response.data.wikipedia_extracts.text,
-        xid: response.data.xid
+        xid: response.data.xid,
+        lat: response.data.point.lat,
+        lon: response.data.point.lon
       };
       
       // push the newMuseumDetails object into the museumDetails array 
