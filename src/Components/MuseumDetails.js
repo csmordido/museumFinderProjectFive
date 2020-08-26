@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import firebase from '../firebase';
 import scrollToElement from './scrollToElement';
+import MuseumMap from './MuseumMap';
 
 const MuseumDetails = (props) => {
 
@@ -31,7 +32,9 @@ const MuseumDetails = (props) => {
         name: response.data.name,
         siteUrl: response.data.url,
         info: response.data.wikipedia_extracts.text,
-        xid: response.data.xid
+        xid: response.data.xid,
+        lat: response.data.point.lat,
+        lon: response.data.point.lon
       };
       
       // push the newMuseumDetails object into the museumDetails array 
@@ -100,6 +103,7 @@ const MuseumDetails = (props) => {
           return (
 
             <div className='wrapper museumContainer' key={item.xid}>
+              <MuseumMap lat={item.lat} lon={item.lon} />
 
               <div className='museumImg'>
                 <img src={item.img} alt={item.name}/>
