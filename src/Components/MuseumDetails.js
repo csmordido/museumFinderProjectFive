@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import firebase from '../firebase';
 import scrollToElement from './scrollToElement';
-import MuseumMap from './Map';
+import MuseumMap from './MuseumMap';
 
 const MuseumDetails = (props) => {
 
@@ -103,7 +103,7 @@ const MuseumDetails = (props) => {
           return (
 
             <div className='wrapper museumContainer' key={item.xid}>
-              <MuseumMap lat={item.lat} lon={item.lon}  />
+              <MuseumMap lat={item.lat} lon={item.lon} />
 
               <div className='museumImg'>
                 <img src={item.img} alt={item.name}/>
