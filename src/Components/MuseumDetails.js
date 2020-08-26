@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import firebase from '../firebase';
 import scrollToElement from './scrollToElement';
+import MuseumMap from './Map';
 
 const MuseumDetails = (props) => {
 
@@ -20,8 +21,6 @@ const MuseumDetails = (props) => {
           apikey: process.env.REACT_APP_OTM_KEY,
         }
       });
-
-      console.log('Details:', response);
 
       // create an empty array to push the API data into
       const museumDetails = [];
@@ -104,6 +103,7 @@ const MuseumDetails = (props) => {
           return (
 
             <div className='wrapper museumContainer' key={item.xid}>
+              <MuseumMap lat={item.lat} lon={item.lon}  />
 
               <div className='museumImg'>
                 <img src={item.img} alt={item.name}/>
