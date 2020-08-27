@@ -1,5 +1,4 @@
 import React from 'react';
-import scrollToElement from './scrollToElement';
 
 const Nav = (props) => {
 

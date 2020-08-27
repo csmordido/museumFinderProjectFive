@@ -13,6 +13,8 @@ const Saved = () => {
   // hook to pull database data on page load
   useEffect(() => {
 
+    let isMounted = true;
+
     const dbRef = firebase.database().ref();
 
     // event listener attached to the firebase database to listen for any value change
@@ -33,9 +35,11 @@ const Saved = () => {
       };
 
       // store the newMuseums array to the museums state
-      setMuseums(newMuseums);
+      if (isMounted) setMuseums(newMuseums);
 
     });
+
+    return () => {isMounted = false}
 
   }, []);
 
