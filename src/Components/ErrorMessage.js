@@ -4,10 +4,8 @@ const ErrorMessage = (props) => {
 
   // on click of the "Close window" button
   const handleClick = () => {
-
     // hide the error message
     props.setHasError(false);
-    
   }
 
   return (

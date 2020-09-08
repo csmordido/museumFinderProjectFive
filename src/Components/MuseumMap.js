@@ -43,9 +43,7 @@ const MuseumMap = (props) => {
   }, []);
 
   return (
-    <div ref={googleMapRef} style={{height: '300px', width: '100%', flexBasis: '100%', marginBottom: '30px'}}>
-
-    </div>
+    <div ref={googleMapRef} style={{height: '300px', width: '100%', flexBasis: '100%', marginBottom: '30px'}}></div>
   );
 }
 
