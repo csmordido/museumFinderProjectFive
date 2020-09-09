@@ -8,7 +8,6 @@ const Form = (props) =>  {
 
   // On form submit
   const handleSubmit = async (event) => {
-
     // prevent the default page refresh event
     event.preventDefault();
   
@@ -39,27 +38,22 @@ const Form = (props) =>  {
       setUserInput("");
 
     } catch(err) {
-      
       console.log(err);
 
       props.setHasError(true);
-
     };
-    
   };
 
   return (
     <main>
       <form onSubmit={(event) => handleSubmit(event)} className='wrapper'> 
-
         <label className='visuallyHidden' htmlFor='city'>Enter a city</label>
         <input id='city' value={userInput} type='text' placeholder='Enter City' onChange={(event) => setUserInput(event.target.value)} />
 
         <label className='visuallyHidden' htmlFor='submit'>Search</label>
         <input id='submit' type='submit' value='Search' />
-
+        
         <p>Enter a city to search for museums.</p>
-
       </form>
     </main>
   )

@@ -34,20 +34,17 @@ const MuseumMap = (props) => {
         });
 
         return () => {
-          googleMapScript.addEventListener('load', () => {
+          googleMapScript.removeEventListener('load', () => {
             googleMap.current = createGoogleMap();
             marker.current = createMarker();
           });
+          googleMapScript.remove();
         }
   }, []);
 
   return (
-    <div ref={googleMapRef} style={{height: '300px', width: '100%', flexBasis: '100%', marginBottom: '30px'}}>
-
-    </div>
+    <div ref={googleMapRef} style={{height: '300px', width: '100%', flexBasis: '100%', marginBottom: '30px'}}></div>
   );
 }
 
 export default MuseumMap;
-
-

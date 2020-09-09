@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Header from "./Components/Header";
 import Form from './Components/Form';
 import CityData from './Components/CityData';
@@ -27,11 +27,16 @@ const App = () => {
   /* Toggles the visibility of the Saved component. Passed to the Nav component as props and changed on click of the anchor */
   const [savedIsHidden, setSavedIsHidden] = useState(true);
 
+  const cityInfoRef = useRef(null);
+
+  const savedRef = useRef(null);
+
     return (
       <>
         <Nav 
           savedIsHidden={savedIsHidden} 
           setSavedIsHidden={setSavedIsHidden}
+          forwardedRef={savedRef}
         />
         <Header />
         <Form setCityData={setCityData} setHasError={setHasError} />
@@ -42,6 +47,7 @@ const App = () => {
               setXid={setXid} 
               setIsHidden={setIsHidden}
               setHasError={setHasError}
+              forwardedRef={cityInfoRef}
             />
           :null
         }
@@ -51,12 +57,13 @@ const App = () => {
           xid={xid} 
           setIsHidden={setIsHidden}
           setHasError={setHasError}
+          forwardedRef={cityInfoRef}
           />
           : null
         }
         {
           !savedIsHidden
-          ? <Saved />
+          ? <Saved forwardedRef={savedRef}/>
           : null          
         }
         {
@@ -66,7 +73,6 @@ const App = () => {
         }
       </>
     );
-    
 }
 
 export default App;

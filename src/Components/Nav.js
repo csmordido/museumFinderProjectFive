@@ -5,11 +5,15 @@ const Nav = (props) => {
 
   const handleClick = () => {
     props.setSavedIsHidden(props.savedIsHidden ? false : true);
+
+    setTimeout(() => {
+      scrollToElement(props.forwardedRef.current);
+    }, 500);
   };
   
   return (
     <nav className='savedNav'>
-      <a href='#savedSection' onClick={handleClick}>{props.savedIsHidden ? 'Saved Museums' : 'Close'}</a>
+      <button type='button' onClick={handleClick}>{props.savedIsHidden ? 'Saved Museums' : 'Close'}</button>
     </nav>
   )
 };

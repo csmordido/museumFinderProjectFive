@@ -137,8 +137,9 @@ input[type="submit"],
   text-align: right;
 }
 
-.savedNav a {
-  text-decoration: none;
+.savedNav button {
+  font: 1.1rem 'Kameron', serif;
+  border: none;
   color: #b7b7b7;
   letter-spacing: 1.3px;
   font-weight: 700;
@@ -310,7 +311,6 @@ input[type="submit"],
   position: relative;
   top: -40px;
   left: 50%;
-  transform: translateX(-50%);
   cursor: pointer;
 }
 
@@ -386,7 +386,7 @@ input[type="submit"],
     top: 5%;
   }
 
-  .savedNav a {
+  .savedNav button {
     max-width: initial;
     font-size: 1.1rem;
     padding: 5px 30px;
@@ -477,7 +477,7 @@ input[type="submit"],
   }
 
   .museumsList button,
-  .savedNav a {
+  .savedNav button {
     transition: letter-spacing 0.6s;
   }
 
@@ -489,8 +489,8 @@ input[type="submit"],
   .museumsList button:focus,
   .errorMessage button:hover,
   .errorMessage button:focus,
-  .savedNav a:hover,
-  .savedNav a:focus {
+  .savedNav button:hover,
+  .savedNav button:focus {
     letter-spacing: 3px;
   }
 
@@ -571,6 +571,7 @@ input[type="submit"],
     background-color: #b7b7b7;
     color: #444;
     top: -45px;
+    left: initial;
   }
 }
 
