@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import firebase from '../firebase';
 import SavedModal from './SavedModal';
 
-const Saved = () => {
+const Saved = forwardRef((props, ref) => {
 
   // State storing the museums object from the database. Set in the useEffect hook.
   const [museums, setMuseums] = useState([]);
@@ -63,7 +63,7 @@ const Saved = () => {
   const museumDetailsCopy = [...museumDetails];
 
   return (
-    <section className='saved' id='savedSection'>
+    <section className='saved' id='savedSection' ref={props.forwardedRef}>
       <h2>Saved Museums</h2>
       <ul className='wrapper'>
         {
@@ -84,6 +84,6 @@ const Saved = () => {
       <SavedModal museumDetails={museumDetailsCopy} setMuseumDetails={setMuseumDetails} />
     </section>
   )
-}
+})
 
 export default Saved;

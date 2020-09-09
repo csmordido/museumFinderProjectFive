@@ -44,7 +44,7 @@ const CityMuseums = (props) => {
         setCityMuseums(newCityMuseums);
 
         // scroll to the #cityInfoContainer div
-        scrollToElement('cityInfoContainer');
+        scrollToElement(props.forwardedRef.current);
 
       } catch(err) {
         console.log(err);

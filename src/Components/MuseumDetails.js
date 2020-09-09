@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import firebase from '../firebase';
 import scrollToElement from './scrollToElement';
@@ -7,6 +7,8 @@ import MuseumMap from './MuseumMap';
 const MuseumDetails = (props) => {
 
   const [museumDetails, setMuseumDetails] = useState([]);
+
+  const museumDetailsRef = useRef(null);
 
    // hook to make the API request everytime the xid props updates
    useEffect(() => {
@@ -46,7 +48,7 @@ const MuseumDetails = (props) => {
         setMuseumDetails(museumDetails);
 
         // scroll to the #museumDetailsContainer section
-        scrollToElement('museumDetailsContainer');
+        scrollToElement(museumDetailsRef.current);
         
       } catch(err) {
         console.log(err);
@@ -61,7 +63,7 @@ const MuseumDetails = (props) => {
   // on click of the 'Go back to list' button
   const backToList = () => {
     // scroll back to the #cityInfoContainer div
-    scrollToElement('cityInfoContainer');
+    scrollToElement(props.forwardedRef.current);
     
     // set the setIsHidden state to true after a second to hide the museum details
     setTimeout(() => {
@@ -87,7 +89,7 @@ const MuseumDetails = (props) => {
   const museumDetailsCopy = [...museumDetails];
 
   return (
-    <section className='museumDetails' id='museumDetailsContainer'>
+    <section className='museumDetails' id='museumDetailsContainer' ref={museumDetailsRef}>
       {
         museumDetailsCopy.map(item => {
           return (

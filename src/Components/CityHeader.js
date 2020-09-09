@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import axios from 'axios';
 
-const CityHeader = (props) => {
+const CityHeader = forwardRef((props, ref) => {
 
   // state containing weather information from the Open Weather Map API
   const [weatherData, setWeatherData] = useState({});
@@ -11,7 +11,6 @@ const CityHeader = (props) => {
 
   // hook to make the API request everytime the name props updates
   useEffect(() => {
-
     // async function called inside the useEffect hook
     const getWeatherData = async () => {
 
@@ -42,21 +41,17 @@ const CityHeader = (props) => {
         setWeatherData(weatherData);
 
       } catch(err)  {
-
         console.log(err);
-
       };
-
     };
 
     getWeatherData();
-
   }, [props.cityData]);
 
   return (
     <section>
 
-      <div className='cityInfo' id='cityInfoContainer'>
+      <div className='cityInfo' id='cityInfoContainer' ref={props.forwardedRef}>
 
         <p>Museums in</p>
         <h2>{name}, {country}</h2>
@@ -71,6 +66,6 @@ const CityHeader = (props) => {
     </section>
   )
   
-}
+})
 
 export default CityHeader;

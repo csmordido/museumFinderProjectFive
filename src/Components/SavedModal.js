@@ -1,4 +1,5 @@
 import React from 'react';
+import MuseumMap from './MuseumMap';
 
 const SavedModal = (props) => {
 
@@ -15,6 +16,8 @@ const SavedModal = (props) => {
           return (
             <div className='wrapper museumContainer savedMuseumDetails' key={item.key}>
               <button onClick={closeModal} type='button'>X</button>
+
+              <MuseumMap lat={item.data.lat} lon={item.data.lon} />
 
               <div className='museumImg'>
                 <img src={item.data.img} alt={item.data.name}/>
