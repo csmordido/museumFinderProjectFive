@@ -1,23 +1,21 @@
 {
   "files": {
-    "main.css": "/museumFinderProjectFive/static/css/main.c2ee1df8.chunk.css",
-    "main.js": "/museumFinderProjectFive/static/js/main.0dd5beb8.chunk.js",
-    "main.js.map": "/museumFinderProjectFive/static/js/main.0dd5beb8.chunk.js.map",
-    "runtime-main.js": "/museumFinderProjectFive/static/js/runtime-main.f2ff144a.js",
-    "runtime-main.js.map": "/museumFinderProjectFive/static/js/runtime-main.f2ff144a.js.map",
-    "static/js/2.00a16482.chunk.js": "/museumFinderProjectFive/static/js/2.00a16482.chunk.js",
-    "static/js/2.00a16482.chunk.js.map": "/museumFinderProjectFive/static/js/2.00a16482.chunk.js.map",
+    "main.css": "/museumFinderProjectFive/static/css/main.0b612e3d.chunk.css",
+    "main.js": "/museumFinderProjectFive/static/js/main.52f45e86.chunk.js",
+    "main.js.map": "/museumFinderProjectFive/static/js/main.52f45e86.chunk.js.map",
+    "runtime-main.js": "/museumFinderProjectFive/static/js/runtime-main.13feec94.js",
+    "runtime-main.js.map": "/museumFinderProjectFive/static/js/runtime-main.13feec94.js.map",
+    "static/js/2.21ca4d86.chunk.js": "/museumFinderProjectFive/static/js/2.21ca4d86.chunk.js",
+    "static/js/2.21ca4d86.chunk.js.map": "/museumFinderProjectFive/static/js/2.21ca4d86.chunk.js.map",
     "index.html": "/museumFinderProjectFive/index.html",
-    "precache-manifest.ae0d28e02ad60fce48a178f7458cab38.js": "/museumFinderProjectFive/precache-manifest.ae0d28e02ad60fce48a178f7458cab38.js",
-    "service-worker.js": "/museumFinderProjectFive/service-worker.js",
-    "static/css/main.c2ee1df8.chunk.css.map": "/museumFinderProjectFive/static/css/main.c2ee1df8.chunk.css.map",
-    "static/js/2.00a16482.chunk.js.LICENSE.txt": "/museumFinderProjectFive/static/js/2.00a16482.chunk.js.LICENSE.txt",
-    "static/media/logo.f301e47d.svg": "/museumFinderProjectFive/static/media/logo.f301e47d.svg"
+    "static/css/main.0b612e3d.chunk.css.map": "/museumFinderProjectFive/static/css/main.0b612e3d.chunk.css.map",
+    "static/js/2.21ca4d86.chunk.js.LICENSE.txt": "/museumFinderProjectFive/static/js/2.21ca4d86.chunk.js.LICENSE.txt",
+    "static/media/logo.67e243f2.svg": "/museumFinderProjectFive/static/media/logo.67e243f2.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f2ff144a.js",
-    "static/js/2.00a16482.chunk.js",
-    "static/css/main.c2ee1df8.chunk.css",
-    "static/js/main.0dd5beb8.chunk.js"
+    "static/js/runtime-main.13feec94.js",
+    "static/js/2.21ca4d86.chunk.js",
+    "static/css/main.0b612e3d.chunk.css",
+    "static/js/main.52f45e86.chunk.js"
   ]
 }
