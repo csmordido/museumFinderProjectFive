@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import firebase from '../firebase';
-import scrollToElement from './scrollToElement';
+import scrollToElement from './ScrollToElement';
 import MuseumMap from './MuseumMap';
 
 const MuseumDetails = (props) => {

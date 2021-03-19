@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import scrollToElement from './scrollToElement';
+import scrollToElement from './ScrollToElement';
 
 const CityMuseums = (props) => {
 
